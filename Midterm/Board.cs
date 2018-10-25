@@ -65,14 +65,34 @@
         // this method would work to reveal if the tile is a flag, qmark, number, bomb
         public void RevealTile(int row, int column) { }
 
-        private bool MakesMine() { return false; }
+        private bool MakesMine(int row, int collumn)
+        {
+            int mine = 9;
+            if (hiddenBoard[row,collumn] != mine)
+            {
+                hiddenBoard[row, collumn] = mine;
+                for (int i = row - 1; i <= row + 1; i++)
+                {
+                    for (int j = collumn - 1; j <= collumn + 1; j++)
+                    {
+                        if (hiddenBoard[i, j] != mine)
+                        {
+                            hiddenBoard[i, j] += 1;
+                        }
+                    }
+                
+                }
+                return true;
+            }
+            return false;
+        }
 
         public bool CompletedGame()
         {
             // will tell user if they won or lost
             return false;
         }
-
+        
 
 
 
