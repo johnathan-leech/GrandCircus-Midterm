@@ -4,6 +4,7 @@
 
     class Board
     {
+
         private int rows;
         private int columns;
         private double minesPercent;
@@ -75,23 +76,23 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
