@@ -61,6 +61,7 @@ namespace Midterm
 
         public void DisplayBoard()
         {
+            char displayChar = ' ';
             for(int i = 0; i < columns; i++)
             {
                 for(int j = 0; j < columns; j++)
@@ -68,14 +69,21 @@ namespace Midterm
                     switch(displayBoard[i,j])
                     {
                         case State.clicked:
+                            displayChar = (char)(hiddenBoard[i, j] + '0');
+                            if (displayChar == 9)
+                                displayChar = '\u0042'; //'*'
                             break;
                         case State.flag:
+                            displayChar = '\u0213'; //''
                             break;
                         case State.hidden:
+                            displayChar = '\u0254'; //''
                             break;
                         case State.qmark:
+                            displayChar = '?';
                             break;
                     }
+                    Console.Write(displayChar);
                 }
                 Console.WriteLine();
             }
@@ -137,7 +145,7 @@ namespace Midterm
 
         public bool CompletedGame()
         {
-            bool isMine;
+            bool isMine = true;
             if (isMine == true)
             {
                 Console.WriteLine("BOOOOOOOOM!");
