@@ -51,9 +51,9 @@
 
         private void InitializeBoard()
         {
-            int[,] hiddenBoard = new int[10, 10];
+            hiddenBoard = new int[10, 10];
 
-            int[,] displayBoard = new int[10, 10];
+            displayBoard = new State[10, 10];
         }
 
 
