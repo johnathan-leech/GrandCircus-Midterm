@@ -61,7 +61,24 @@ namespace Midterm
 
         public void DisplayBoard()
         {
-            // will use switch-case statement to display 'clicked' 'hidden' 'qmark' 'flag'
+            for(int i = 0; i < columns; i++)
+            {
+                for(int j = 0; j < columns; j++)
+                {
+                    switch(displayBoard[i,j])
+                    {
+                        case State.clicked:
+                            break;
+                        case State.flag:
+                            break;
+                        case State.hidden:
+                            break;
+                        case State.qmark:
+                            break;
+                    }
+                }
+                Console.WriteLine();
+            }
         }
 
         // this method would work to reveal if the tile is a flag, qmark, number, bomb
