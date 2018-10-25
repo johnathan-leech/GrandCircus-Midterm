@@ -1,4 +1,5 @@
-﻿namespace Midterm
+﻿using System;
+namespace Midterm
 {
     public enum State { hidden, flag, qmark, clicked }
 
@@ -63,7 +64,29 @@
         }
 
         // this method would work to reveal if the tile is a flag, qmark, number, bomb
-        public void RevealTile(int row, int column) { }
+        public bool RevealTile(int row, int column)
+        {
+            if(displayBoard[row,column] == State.hidden)
+            {
+                displayBoard[row,column] = State.clicked;
+                for(int i = row - 1; i <= row +1; i++)
+                {
+                    for (int j = column - 1; j <= column + 1; j++)
+                    {
+                        try
+                        {
+                            RevealTile(i, j);
+                        }
+                        catch(IndexOutOfRangeException)
+                        {
+
+                        }
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
 
         private bool MakesMine() { return false; }
 
