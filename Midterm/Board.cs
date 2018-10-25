@@ -72,6 +72,8 @@ namespace Midterm
                             displayChar = (char)(hiddenBoard[i, j] + '0');
                             if (displayChar == 9)
                                 displayChar = '\u0042'; //'*'
+                            if (displayChar == 0)
+                                displayChar = ' ';
                             break;
                         case State.flag:
                             displayChar = '\u0213'; //''
