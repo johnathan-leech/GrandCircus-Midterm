@@ -1,0 +1,7 @@
+﻿namespace Midterm
+{
+    class UserInput
+    {
+
+    }
+}
