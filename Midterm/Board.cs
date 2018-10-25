@@ -1,4 +1,6 @@
-﻿namespace Midterm
+﻿using System;
+
+namespace Midterm
 {
     public enum State { hidden, flag, qmark, clicked }
 
@@ -49,11 +51,10 @@
 
         public Board(int row, int column, int minesPercent) { }
 
-        private void InitializeBoard()
+        private void InitializeBoard(int dimension)
         {
-            int[,] hiddenBoard = new int[10, 10];
-
-            int[,] displayBoard = new int[10, 10];
+            hiddenBoard = new int[dimension, dimension];
+            displayBoard = new State[dimension, dimension];
         }
 
 
@@ -69,7 +70,13 @@
 
         public bool CompletedGame()
         {
-            // will tell user if they won or lost
+            bool isMine;
+            if (isMine == true)
+            {
+                Console.WriteLine("BOOOOOOOOM!");
+                Console.WriteLine("Oh no, you hit a bomb!");
+                return true;
+            }
             return false;
         }
 
