@@ -2,6 +2,9 @@
 {
     class Board
     {
-
+        //Fields
+        //Properties
+        //Constructors
+        //Methods
     }
 }
