@@ -87,19 +87,26 @@ namespace Midterm
             if (displayBoard[row, column] == State.hidden)
             {
                 displayBoard[row, column] = State.clicked;
-                for (int i = row - 1; i <= row + 1; i++)
+                if (hiddenBoard[row, column] == 0)
                 {
-                    for (int j = column - 1; j <= column + 1; j++)
+                    for (int i = row - 1; i <= row + 1; i++)
                     {
-                        try
+                        for (int j = column - 1; j <= column + 1; j++)
                         {
-                            RevealTile(i, j);
-                        }
-                        catch (IndexOutOfRangeException)
-                        {
+                            try
+                            {
+                                RevealTile(i, j);
+                            }
+                            catch (IndexOutOfRangeException)
+                            {
 
+                            }
                         }
                     }
+                }
+                else if(hiddenBoard[row,column] == 9)
+                {
+                    
                 }
                 return true;
             }
