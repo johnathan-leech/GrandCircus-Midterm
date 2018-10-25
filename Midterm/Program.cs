@@ -1,7 +1,8 @@
 ﻿/*
 Minefield by Nicholas, Ty, Johnathan, Katie
  */
-
+using System;
+using System.Collections.Generic;
 namespace Midterm
 {
     class Program
