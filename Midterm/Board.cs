@@ -122,6 +122,11 @@ namespace Midterm
             }
             return false;
         }
+        private void MakeAllMines()
+        {
+            Random r = new Random();
+            for (int i = 0; i < rows * columns * minesPercent; i += MakesMine(r.Next() % rows, r.Next() % columns) ? 1 : 0) ;
+        }
 
         private bool MakesMine(int row, int collumn)
         {
