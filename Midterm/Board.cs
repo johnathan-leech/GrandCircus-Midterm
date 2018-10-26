@@ -155,11 +155,11 @@ namespace Midterm
 
         public bool WinsOrLoses()
         {
-            if (isMine == true)
+            if (isMine == false)
             {
                 Console.WriteLine("BOOOOOOOOM!");
                 Console.WriteLine("Oh no, you hit a bomb!");
-                Console.WriteLine(hiddenBoard);  // <-- display hidden board
+                DisplayHiddenBoard();  // <-- display hidden board
                 Console.ReadLine();
 
                 return true;
@@ -187,7 +187,11 @@ namespace Midterm
 
         public void isFlagged(int row, int column, ConsoleKey inputKey)
         {
-            if (inputKey == ConsoleKey.F)
+            if (displayBoard[row, column] == State.clicked)
+            {
+                Console.WriteLine("This space is already clicked!");
+            }
+            else if (inputKey == ConsoleKey.F)
             {
                 if (displayBoard[row, column] == State.flag)
                 {

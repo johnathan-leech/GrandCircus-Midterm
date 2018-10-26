@@ -225,5 +225,15 @@ namespace Midterm
             else if (key == ConsoleKey.D9 || key == ConsoleKey.NumPad9) { return 9; }
             else { return 0; }
         }
+
+        // needs to take user input for row, column selection
+        public static void TakeCoordinates()
+        {
+
+        }
+
+        // need to add 'make a loop of play' in order to get continuous display and input
+
+
     }
 }
