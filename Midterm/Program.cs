@@ -55,10 +55,6 @@ namespace Midterm
                     menu[entry - 1].Value.Invoke();//invokes method
                     retry = false;
                 }
-                /*else
-                {
-                    Console.WriteLine("Invalid Input, Try Again...");/////////////////////can be deleted
-                }*/
             }
         }
 
@@ -102,10 +98,6 @@ namespace Midterm
                     menu[entry - 1].Value.Invoke();
                     retry = false;
                 }
-                /*else
-                {
-                    Console.WriteLine("Invalid Input");//////////////////////////////////can be deleted
-                }*/
             }
         }
 
