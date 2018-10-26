@@ -15,7 +15,7 @@ namespace ConsoleApp9
         public static void Header()//Header clears each page and displays title
         {
             Console.Clear();
-            Console.WriteLine("Welcome to MINEFIELD!\n");
+            Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!\n");
         }
 
         public static void StartMenu()
@@ -35,10 +35,10 @@ namespace ConsoleApp9
                 foreach (KeyValuePair<string, Action> item in menu)
                 {
                     menuCount += 1;//counter to display selection options
-                    Console.WriteLine(menuCount + " - " + item.Key);
+                    Console.WriteLine(new string(' ', 33) + menuCount + " - " + item.Key);
                 }
 
-                Console.Write("\nWhat would you like to do? (enter number)  ");
+                Console.Write($"\n{new string(' ', 22)}What would you like to do? (enter number)  ");
                 int entry = 0;
                 if (menuCount < 10)//set condition to equal 1 key press
                 {
@@ -55,10 +55,10 @@ namespace ConsoleApp9
                     menu[entry - 1].Value.Invoke();//invokes method
                     retry = false;
                 }
-                else
+                /*else
                 {
-                    Console.WriteLine("Invalid Input, Try Again...");
-                }
+                    Console.WriteLine("Invalid Input, Try Again...");/////////////////////can be deleted
+                }*/
             }
         }
 
@@ -82,10 +82,10 @@ namespace ConsoleApp9
                 foreach (KeyValuePair<string, Action> item in menu)
                 {
                     menuCount += 1;
-                    Console.WriteLine(menuCount + " - " + item.Key);
+                    Console.WriteLine(new string(' ', 33) + menuCount + " - " + item.Key);
                 }
 
-                Console.Write("\nWhat would you like to do? (enter number)  ");
+                Console.Write($"\n{new string(' ', 22)}What would you like to do? (enter number)  ");
                 int entry = 0;
                 if (menuCount < 10)
                 {
@@ -102,18 +102,18 @@ namespace ConsoleApp9
                     menu[entry - 1].Value.Invoke();
                     retry = false;
                 }
-                else
+                /*else
                 {
-                    Console.WriteLine("Invalid Input");
-                }
+                    Console.WriteLine("Invalid Input");//////////////////////////////////can be deleted
+                }*/
             }
         }
 
         public static void Instruct()
         {
             Header();
-            Console.WriteLine("Instructions");///////////////////////Write Instructions
-            Console.Write("\nReturn to Previous Menu?  (y/n)  ");
+            Console.WriteLine($"\n{new string(' ', 36)}TO PLAY:\n\n{new string(' ', 26)}1. Select difficulty level.\n{new string(' ', 31)}*FOR CUSTOM BOARD*\n{new string(' ', 20)}Enter board dimension(s) & total mines,\n{new string(' ', 31)}or select default.\n\n{new string(' ', 22)}2. Select whether you would like to:\n{new string(' ', 32)}Step on square - \n{new string(' ', 20)}This could result in detonating a mine!\n{new string(' ', 30)}Flag a square (f) - \n{new string(' ', 18)}Mark squares you're certain contain a mine.\n{new string(' ', 28)}Question a square (?) - \n{new string(' ', 19)}If you're not 100% certain there is a mine.\n\n{new string(' ', 12)}3. Enter coordinates of the square you'd like to select.\n\n{new string(' ', 8)}4. Continue until all squares are either stepped on or flagged.");///////////////////////Write Instructions//note we need to set available flags to # of mines and display how many are unused.//possibly ask if square or rectangular board, then dimension input would equal x&y or x(or)y
+            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
             bool yes = YesNo();
             if (yes)
             {
@@ -128,8 +128,9 @@ namespace ConsoleApp9
         public static void CreditsStatic()
         {
             Header();
-            Console.WriteLine("Credits");///////////////////////Write Credits
-            Console.Write("\nReturn to Previous Menu?  (y/n)  ");
+            //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
+            Console.WriteLine($"\n{new string(' ', 36)}CREDITS\n\n{new string(' ', 31)}DEVELOPMENT TEAM: \n\n{new string(' ', 28)}LEADER: NICHOLAS LANDAU\n{new string(' ', 32)}JONATHAN  LEECH\n{new string(' ', 33)}KATIE HARRELL\n{new string(' ', 35)}TY CARRON\n\n");///////////////////////Write Credits///////NEED TEAM NAME!
+            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
             bool yes = YesNo();
             if (yes)
             {
@@ -170,7 +171,7 @@ namespace ConsoleApp9
 
         public static void Exit()
         {
-            Console.Write("\nGoodbye! Press ESCAPE to Exit...");
+            Console.Write($"\n{new string(' ', 24)}Goodbye! Press ESCAPE to Exit...");
             while (Console.ReadKey().Key != ConsoleKey.Escape)
             {
                 continue;
@@ -180,8 +181,8 @@ namespace ConsoleApp9
         public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
         {
             Header();
-            Console.WriteLine($"Board dimension is {dimension}");
-            Console.Write("\nReturn to Previous Menu?  (y/n)  ");
+            Console.WriteLine($"\n{new string(' ', 30)}Board dimension is {dimension}");
+            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
             bool yes = YesNo();
             if (yes)
             {
@@ -196,8 +197,8 @@ namespace ConsoleApp9
         public static void CustomXY()///////////////////////////////////////////////////temp method to test menus
         {
             Header();
-            Console.WriteLine("user input xy & mines");
-            Console.Write("\nReturn to Previous Menu?  (y/n)  ");
+            Console.WriteLine($"{new string(' ', 30)}user input xy & mines");
+            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
             bool yes = YesNo();
             if (yes)
             {
