@@ -9,9 +9,7 @@ namespace Midterm
     {
         static void Main(string[] args)
         {
-
             StartMenu();
-
         }
 
         public static void Header()
@@ -41,17 +39,19 @@ namespace Midterm
                 }
 
                 Console.Write("\nWhat would you like to do? (enter number)  ");
+                int.TryParse(Console.ReadLine(), out int entry);
                 bool newEntry = true;
                 while (newEntry)
                 {
-                    if (int.TryParse(Console.ReadLine(), out int entry) && entry > 0 && entry <= menu.Count)
+                    if (entry > 0 && entry <= menu.Count)
                     {
                         menu[entry - 1].Value.Invoke();
                         newEntry = false;
+                        retry = false;
                     }
                     else
                     {
-                        Console.WriteLine("Invalid Input");
+                        Console.WriteLine("Invalid Input, Try Again...");
                         newEntry = true;
                     }
                 }
@@ -71,6 +71,8 @@ namespace Midterm
                 menu.Add(new KeyValuePair<string, Action>("Hard", () => InitializeBoard(30)));
                 menu.Add(new KeyValuePair<string, Action>("Expert", () => InitializeBoard(40)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
+                menu.Add(new KeyValuePair<string, Action>("Return to Start Menu", () => StartMenu()));
+                menu.Add(new KeyValuePair<string, Action>("Exit", () => Exit()));
 
                 int menuCount = 0;
                 foreach (KeyValuePair<string, Action> item in menu)
@@ -87,40 +89,53 @@ namespace Midterm
                     {
                         menu[entry - 1].Value.Invoke();
                         newEntry = false;
+                        retry = false;
                     }
                     else
                     {
                         Console.WriteLine("Invalid Input");
                         newEntry = true;
                     }
-                }
+                }               
             }
         }
 
         public static void Instruct()
         {
-            bool retry = true;
-            while (retry)
+            Header();
+            Console.WriteLine("Instructions");///////////////////////Write Instructions
+            Console.Write("\nReturn to Previous Menu?  (y/n)  ");
+            bool yes = YesNo();
+            if (yes)
             {
-                Console.WriteLine("Instructions");///////////////////////Write Instructions
-                retry = Retry();
+                MainMenu();
+            }
+            else
+            {
+                Exit();
             }
         }
 
         public static void CreditsStatic()
         {
-            bool retry = true;
-            while (retry)
+            Header();
+            Console.WriteLine("Credits");///////////////////////Write Credits
+            Console.Write("\nReturn to Previous Menu?  (y/n)  ");
+            bool yes = YesNo();
+            if (yes)
             {
-                Console.WriteLine("Credits");///////////////////////Write Credits
-                retry = Retry();
+                MainMenu();
+            }
+            else
+            {
+                Exit();
             }
         }
 
-        public static bool Retry()
+        public static bool YesNo()
         {
             bool valid = false;
-            bool retry = true;
+            bool yes = true;
 
             while (!valid)
             {
@@ -128,44 +143,61 @@ namespace Midterm
                 if (key == ConsoleKey.Y)
                 {
                     valid = true;
-                    retry = true;
+                    yes = true;
                 }
                 else if (key == ConsoleKey.N)
                 {
                     valid = true;
-                    retry = false;
+                    yes = false;
                 }
                 else
                 {
-                    Console.Write("\nReturn to Previous Menu?  (y/n)  ");
                     valid = false;
-                    retry = true;
+                    yes = true;
                 }
             }
-            return retry;
+            return yes;
         }
 
         public static void Exit()
         {
-            ConsoleKey key = Console.ReadKey().Key;
-
             Console.Write("\nGoodbye! Press ESCAPE to Exit...");
             while (Console.ReadKey().Key != ConsoleKey.Escape)
             {
-                key = Console.ReadKey().Key;
+                continue;
             }
         }
 
         public static void InitializeBoard(int dimension)
         {
+            Header();
             Console.WriteLine($"Board dimension is {dimension}");
-            Console.ReadLine();
+            Console.Write("\nReturn to Previous Menu?  (y/n)  ");
+            bool yes = YesNo();
+            if (yes)
+            {
+                MainMenu();
+            }
+            else
+            {
+                Exit();
+            }
         }
 
         public static void CustomXY()
         {
+            Header();
             Console.WriteLine("user input xy & mines");
-            Console.ReadLine();
+            Console.Write("\nReturn to Previous Menu?  (y/n)  ");
+            bool yes = YesNo();
+            if (yes)
+            {
+                MainMenu();
+            }
+            else
+            {
+                Exit();
+            }
         }
     }
 }
