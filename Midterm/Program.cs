@@ -3,7 +3,7 @@ Minefield by Nicholas, Ty, Johnathan, Katie
  */
 using System;
 using System.Collections.Generic;
-namespace Midterm
+namespace ConsoleApp9
 {
     class Program
     {
@@ -12,7 +12,7 @@ namespace Midterm
             StartMenu();
         }
 
-        public static void Header()
+        public static void Header()//Header clears each page and displays title
         {
             Console.Clear();
             Console.WriteLine("Welcome to MINEFIELD!\n");
@@ -20,40 +20,44 @@ namespace Midterm
 
         public static void StartMenu()
         {
-            bool retry = true;
+            bool retry = true;//bool to loop entire method when entry is invalid
             while (retry)
             {
                 Header();
 
-                List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
+                List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();//List with KeyValuePairs for menu: string = display; Action = method call; to add: just menu.Add with no additional code changes
                 menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
                 menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instruct()));
                 menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Exit()));
 
-                int menuCount = 0;
+                int menuCount = 0;//globally declared to use in multiple nests, changes dynamically based on menu items
                 foreach (KeyValuePair<string, Action> item in menu)
                 {
-                    menuCount += 1;
+                    menuCount += 1;//counter to display selection options
                     Console.WriteLine(menuCount + " - " + item.Key);
                 }
 
                 Console.Write("\nWhat would you like to do? (enter number)  ");
-                int.TryParse(Console.Read(), out int entry);
-                bool newEntry = true;
-                while (newEntry)
+                int entry = 0;
+                if (menuCount < 10)//set condition to equal 1 key press
                 {
-                    if (entry > 0 && entry <= menu.Count)
-                    {
-                        menu[entry - 1].Value.Invoke();
-                        newEntry = false;
-                        retry = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Input, Try Again...");
-                        newEntry = true;
-                    }
+                    ConsoleKey key = Console.ReadKey().Key;//reads the key
+                    entry = KeyToNum(key);//sends key to method that converts to int
+                }
+                else
+                {
+                    int.TryParse(Console.ReadLine(), out entry);//reads the line (user must press enter)
+                }
+
+                if (entry > 0 && entry <= menu.Count)//checks for valid entry
+                {
+                    menu[entry - 1].Value.Invoke();//invokes method
+                    retry = false;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input, Try Again...");
                 }
             }
         }
@@ -82,21 +86,26 @@ namespace Midterm
                 }
 
                 Console.Write("\nWhat would you like to do? (enter number)  ");
-                bool newEntry = true;
-                while (newEntry)
+                int entry = 0;
+                if (menuCount < 10)
                 {
-                    if (int.TryParse(Console.ReadLine(), out int entry) && entry > 0 && entry <= menu.Count)
-                    {
-                        menu[entry - 1].Value.Invoke();
-                        newEntry = false;
-                        retry = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Input");
-                        newEntry = true;
-                    }
-                }               
+                    ConsoleKey key = Console.ReadKey().Key;
+                    entry = KeyToNum(key);
+                }
+                else
+                {
+                    int.TryParse(Console.ReadLine(), out entry);
+                }
+
+                if (entry > 0 && entry <= menu.Count)
+                {
+                    menu[entry - 1].Value.Invoke();
+                    retry = false;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                }
             }
         }
 
@@ -168,7 +177,7 @@ namespace Midterm
             }
         }
 
-        public static void InitializeBoard(int dimension)
+        public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
         {
             Header();
             Console.WriteLine($"Board dimension is {dimension}");
@@ -184,7 +193,7 @@ namespace Midterm
             }
         }
 
-        public static void CustomXY()
+        public static void CustomXY()///////////////////////////////////////////////////temp method to test menus
         {
             Header();
             Console.WriteLine("user input xy & mines");
@@ -198,6 +207,20 @@ namespace Midterm
             {
                 Exit();
             }
+        }
+
+        public static int KeyToNum(ConsoleKey key)
+        {
+            if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1) { return 1; }
+            else if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2) { return 2; }
+            else if (key == ConsoleKey.D3 || key == ConsoleKey.NumPad3) { return 3; }
+            else if (key == ConsoleKey.D4 || key == ConsoleKey.NumPad4) { return 4; }
+            else if (key == ConsoleKey.D5 || key == ConsoleKey.NumPad5) { return 5; }
+            else if (key == ConsoleKey.D6 || key == ConsoleKey.NumPad6) { return 6; }
+            else if (key == ConsoleKey.D7 || key == ConsoleKey.NumPad7) { return 7; }
+            else if (key == ConsoleKey.D8 || key == ConsoleKey.NumPad8) { return 8; }
+            else if (key == ConsoleKey.D9 || key == ConsoleKey.NumPad9) { return 9; }
+            else { return 0; }
         }
     }
 }
