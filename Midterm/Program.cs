@@ -15,7 +15,7 @@ namespace Midterm
         public static void Header()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to MINEFIELD!");
+            Console.WriteLine("Welcome to MINEFIELD!\n");
         }
 
         public static void StartMenu()
