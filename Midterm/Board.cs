@@ -155,7 +155,7 @@ namespace Midterm
             for (int i = 0; i < rows * columns * minesPercent; i += MakesMine(r.Next() % rows, r.Next() % columns) ? 1 : 0) ;
         }
 
-        public void MakesMine(int row, int collumn)
+        public bool MakesMine(int row, int collumn)
         {
             int mine = 9;
             if (hiddenBoard[row, collumn] != mine)
@@ -164,7 +164,6 @@ namespace Midterm
 
                 for (int i = row - 1; i <= row + 1; i++)
                 {
-
                     for (int j = collumn - 1; j <= collumn + 1; j++)
                     {
                         try
@@ -174,17 +173,15 @@ namespace Midterm
                                 hiddenBoard[i, j] += 1;
                             }
                         }
-                        catch
+                        catch (IndexOutOfRangeException)
                         {
 
                         }
-
                     }
-
                 }
-
-
+                return true;
             }
+            return false;
         }
 
             public bool CompletedGame()
