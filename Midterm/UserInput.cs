@@ -88,7 +88,7 @@ namespace Midterm
 
                 if (entry > 0 && entry <= menu.Count)
                 {
-                    Board b = menu[entry - 1].Value.Invoke();
+                    menu[entry - 1].Value.Invoke();
                     retry = false;
                 }
             }
@@ -163,12 +163,12 @@ namespace Midterm
             }
         }
 
-        public static Board InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
+        public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
         {
             Header();
             Console.WriteLine($"\n{new string(' ', 30)}Board dimension is {dimension}");
             Board newgame = new Board(dimension, dimension);
-            return newgame;
+            //return newgame;
             Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
             bool yes = YesNo();
             if (yes)

@@ -6,39 +6,12 @@ namespace Midterm
 
     class Board
     {
-
+        public bool isMine;
         private int rows;
         private int columns;
         private double minesPercent;
         private int[,] hiddenBoard;
         private State[,] displayBoard;
-
-
-        //private int rows;
-        //public int Rows
-        //{
-        //    get
-        //    {
-        //        return rows;
-        //    }
-        //    set
-        //    {
-        //        rows = value;
-        //    }
-        //}
-
-        //private int columns;
-        //public int Columns
-        //{
-        //    get
-        //    {
-        //        return columns;
-        //    }
-        //    set
-        //    {
-        //        columns = value;
-        //    }
-        //}
 
         public Board()
         {
@@ -50,6 +23,7 @@ namespace Midterm
 
         public Board(int row, int column)
         {
+            // do we even need this Method, considering the following Method?
             rows = row;
             columns = column;
             minesPercent = .15;
@@ -64,12 +38,6 @@ namespace Midterm
             InitializeBoard();
         }
 
-        private void InitializeBoard(int dimension)
-        {
-            hiddenBoard = new int[dimension, dimension];
-            displayBoard = new State[dimension, dimension];
-
-        }
         private void InitializeBoard()
         {
             hiddenBoard = new int[rows, columns];
@@ -82,8 +50,8 @@ namespace Midterm
                     displayBoard[i, j] = State.hidden;
                 }
             }
+            MakeAllMines();
         }
-
 
         public void DisplayBoard()
         {
@@ -96,19 +64,19 @@ namespace Midterm
                     {
                         case State.clicked:
                             displayChar = (char)(hiddenBoard[i, j] + '0');
-                            if (displayChar == 9)
+                            if (displayChar == '9')
                                 displayChar = '\u0042'; //'*'
-                            if (displayChar == 0)
-                                displayChar = ' ';
+                            if (displayChar == '0')
+                                displayChar = '.';
                             break;
                         case State.flag:
-                            displayChar = '\u0213'; //''
+                            displayChar = (char)213; //''
                             break;
                         case State.hidden:
-                            displayChar = '\u0254'; //''
+                            displayChar = '#'; //''
                             break;
                         case State.qmark:
-                            displayChar = '?';
+                            displayChar = (char)84;
                             break;
                     }
                     Console.Write(displayChar);
@@ -142,7 +110,7 @@ namespace Midterm
                 }
                 else if (hiddenBoard[row, column] == 9)
                 {
-
+                    isMine = true;
                 }
                 return true;
             }
@@ -183,10 +151,9 @@ namespace Midterm
             }
             return false;
         }
-
+        
         public bool CompletedGame()
         {
-            bool isMine = true;
             if (isMine == true)
             {
                 Console.WriteLine("BOOOOOOOOM!");
@@ -194,6 +161,10 @@ namespace Midterm
                 return true;
             }
             return false;
+
+            //if ()
+
+            //Console.WriteLine(hiddenBoard);
         }
         public void isFlagged(int row, int column, ConsoleKey inputKey)
         {
