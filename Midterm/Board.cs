@@ -13,6 +13,33 @@ namespace Midterm
         private int[,] hiddenBoard;
         private State[,] displayBoard;
 
+
+        //private int rows;
+        //public int Rows
+        //{
+        //    get
+        //    {
+        //        return rows;
+        //    }
+        //    set
+        //    {
+        //        rows = value;
+        //    }
+        //}
+
+        //private int columns;
+        //public int Columns
+        //{
+        //    get
+        //    {
+        //        return columns;
+        //    }
+        //    set
+        //    {
+        //        columns = value;
+        //    }
+        //}
+
         public Board()
         {
             rows = 10;
@@ -128,31 +155,39 @@ namespace Midterm
             for (int i = 0; i < rows * columns * minesPercent; i += MakesMine(r.Next() % rows, r.Next() % columns) ? 1 : 0) ;
         }
 
-        private bool MakesMine(int row, int collumn)
+        public void MakesMine(int row, int collumn)
         {
-
-
             int mine = 9;
             if (hiddenBoard[row, collumn] != mine)
             {
                 hiddenBoard[row, collumn] = mine;
+
                 for (int i = row - 1; i <= row + 1; i++)
                 {
+
                     for (int j = collumn - 1; j <= collumn + 1; j++)
                     {
-                        if (hiddenBoard[i, j] != mine)
+                        try
                         {
-                            hiddenBoard[i, j] += 1;
+                            if (hiddenBoard[i, j] != mine)
+                            {
+                                hiddenBoard[i, j] += 1;
+                            }
                         }
+                        catch
+                        {
+
+                        }
+
                     }
 
                 }
-                return true;
+
+
             }
-            return false;
         }
 
-        public bool CompletedGame()
+            public bool CompletedGame()
         {
             bool isMine = true;
             if (isMine == true)
