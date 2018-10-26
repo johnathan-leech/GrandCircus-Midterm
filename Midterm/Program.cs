@@ -39,7 +39,7 @@ namespace Midterm
                 }
 
                 Console.Write("\nWhat would you like to do? (enter number)  ");
-                int.TryParse(Console.ReadLine(), out int entry);
+                int.TryParse(Console.Read(), out int entry);
                 bool newEntry = true;
                 while (newEntry)
                 {
