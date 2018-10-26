@@ -155,16 +155,16 @@ namespace Midterm
             for (int i = 0; i < rows * columns * minesPercent; i += MakesMine(r.Next() % rows, r.Next() % columns) ? 1 : 0) ;
         }
 
-        public bool MakesMine(int row, int collumn)
+        public bool MakesMine(int row, int column)
         {
             int mine = 9;
-            if (hiddenBoard[row, collumn] != mine)
+            if (hiddenBoard[row, column] != mine)
             {
-                hiddenBoard[row, collumn] = mine;
+                hiddenBoard[row, column] = mine;
 
                 for (int i = row - 1; i <= row + 1; i++)
                 {
-                    for (int j = collumn - 1; j <= collumn + 1; j++)
+                    for (int j = column - 1; j <= column + 1; j++)
                     {
                         try
                         {
