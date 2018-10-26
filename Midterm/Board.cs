@@ -45,17 +45,43 @@ namespace Midterm
             rows = 10;
             columns = 10;
             minesPercent = .15;
+            InitializeBoard();
         }
 
-        public Board(int row, int column) { }
+        public Board(int row, int column)
+        {
+            rows = row;
+            columns = column;
+            minesPercent = .15;
+            InitializeBoard();
+        }
 
-        public Board(int row, int column, int minesPercent) { }
+        public Board(int row, int column, double minesPercent)
+        {
+            rows = row;
+            columns = column;
+            this.minesPercent = minesPercent;
+            InitializeBoard();
+        }
 
         private void InitializeBoard(int dimension)
         {
             hiddenBoard = new int[dimension, dimension];
             displayBoard = new State[dimension, dimension];
 
+        }
+        private void InitializeBoard()
+        {
+            hiddenBoard = new int[rows, columns];
+            displayBoard = new State[rows, columns];
+            for(int i =0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    hiddenBoard[i, j] = 0;
+                    displayBoard[i, j] = State.hidden;
+                }
+            }
         }
 
 
