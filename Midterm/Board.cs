@@ -67,7 +67,7 @@ namespace Midterm
                             if (displayChar == '9')
                                 displayChar = '\u0042'; //'*'
                             if (displayChar == '0')
-                                displayChar = '.';
+                                displayChar = '-';
                             break;
                         case State.flag:
                             displayChar = (char)213; //''
@@ -79,7 +79,7 @@ namespace Midterm
                             displayChar = (char)84;
                             break;
                     }
-                    Console.Write(displayChar);
+                    Console.Write(displayChar + " ");
                 }
                 Console.WriteLine();
             }
@@ -173,5 +173,64 @@ namespace Midterm
             //    UserInput.Credits();
             //}
         }
+
+        public void isFlagged(int row, int column, ConsoleKey inputKey)
+        {
+
+
+            if (inputKey == ConsoleKey.F)
+            {
+                if (displayBoard[row, column] == State.flag)
+                {
+                    displayBoard[row, column] = State.hidden;
+                }
+                else
+                {
+                    displayBoard[row, column] = State.flag;
+                }
+            }
+            else if (inputKey == ConsoleKey.Q)
+            {
+                if (displayBoard[row, column] == State.qmark)
+                {
+                    displayBoard[row, column] = State.hidden;
+                }
+                else
+                {
+                    displayBoard[row, column] = State.qmark;
+                }
+            }
+
+
+
+        }
+        public void DisplayHiddenBoard()
+        {
+            char temp = ' ';
+            for (int i = 0; i < columns; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    switch (hiddenBoard[i, j])
+                    {
+                        case 0:
+                            temp = '-';
+                            break;
+                        case 9:
+                            temp = '*';
+                            break;
+                        default:
+                            temp = (char)('0' + hiddenBoard[i, j]);
+                            break;
+                    }
+
+                    Console.Write(temp + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+
+
     }
 }
