@@ -74,7 +74,7 @@ namespace Midterm
         {
             hiddenBoard = new int[rows, columns];
             displayBoard = new State[rows, columns];
-            for(int i =0; i < rows; i++)
+            for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
@@ -88,11 +88,11 @@ namespace Midterm
         public void DisplayBoard()
         {
             char displayChar = ' ';
-            for(int i = 0; i < columns; i++)
+            for (int i = 0; i < columns; i++)
             {
-                for(int j = 0; j < columns; j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    switch(displayBoard[i,j])
+                    switch (displayBoard[i, j])
                     {
                         case State.clicked:
                             displayChar = (char)(hiddenBoard[i, j] + '0');
@@ -140,9 +140,9 @@ namespace Midterm
                         }
                     }
                 }
-                else if(hiddenBoard[row,column] == 9)
+                else if (hiddenBoard[row, column] == 9)
                 {
-                    
+
                 }
                 return true;
             }
@@ -184,7 +184,7 @@ namespace Midterm
             return false;
         }
 
-            public bool CompletedGame()
+        public bool CompletedGame()
         {
             bool isMine = true;
             if (isMine == true)
@@ -195,7 +195,37 @@ namespace Midterm
             }
             return false;
         }
+        public void isFlagged(int row, int column, ConsoleKey inputKey)
+        {
+            
 
+            if(inputKey == ConsoleKey.F)
+            {
+                if (displayBoard[row, column] == State.flag)
+                {
+                    displayBoard[row, column] = State.hidden;
+                }
+                else
+                {
+                    displayBoard[row, column] = State.flag;
+                }
+            }
+            else if(inputKey == ConsoleKey.Q)
+            {
+                if (displayBoard[row, column] == State.qmark)
+                {
+                    displayBoard[row, column] = State.hidden;
+                }
+                else
+                {
+                    displayBoard[row, column] = State.qmark;
+                }
+            }
+
+
+            
+        }
+            
 
 
 
