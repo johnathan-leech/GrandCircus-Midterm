@@ -50,6 +50,7 @@ namespace Midterm
 
         public Board(int row, int column)
         {
+            // do we even need this Method, considering the following Method?
             rows = row;
             columns = column;
             minesPercent = .15;
@@ -74,7 +75,7 @@ namespace Midterm
         {
             hiddenBoard = new int[rows, columns];
             displayBoard = new State[rows, columns];
-            for(int i =0; i < rows; i++)
+            for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
@@ -84,15 +85,14 @@ namespace Midterm
             }
         }
 
-
         public void DisplayBoard()
         {
             char displayChar = ' ';
-            for(int i = 0; i < columns; i++)
+            for (int i = 0; i < columns; i++)
             {
-                for(int j = 0; j < columns; j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    switch(displayBoard[i,j])
+                    switch (displayBoard[i, j])
                     {
                         case State.clicked:
                             displayChar = (char)(hiddenBoard[i, j] + '0');
@@ -140,9 +140,9 @@ namespace Midterm
                         }
                     }
                 }
-                else if(hiddenBoard[row,column] == 9)
+                else if (hiddenBoard[row, column] == 9)
                 {
-                    
+
                 }
                 return true;
             }
