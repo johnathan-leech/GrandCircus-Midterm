@@ -19,9 +19,9 @@ namespace Midterm
                 Header();
 
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();//List with KeyValuePairs for menu: string = display; Action = method call; to add: just menu.Add with no additional code changes
-                menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
-                menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instruct()));
-                menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
+                menu.Add(new KeyValuePair<string, Action>("Play", () => LevelSelect()));
+                menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instructions()));
+                menu.Add(new KeyValuePair<string, Action>("Credits", () => Credits()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Exit()));
 
                 int menuCount = 0;//globally declared to use in multiple nests, changes dynamically based on menu items
@@ -51,7 +51,7 @@ namespace Midterm
             }
         }
 
-        public static void MainMenu()
+        public static void LevelSelect()
         {
             bool retry = true;
             while (retry)
@@ -94,15 +94,30 @@ namespace Midterm
             }
         }
 
-        public static void Instruct()
+        public static void Instructions()
         {
             Header();
-            Console.WriteLine($"\n{new string(' ', 36)}TO PLAY:\n\n{new string(' ', 26)}1. Select difficulty level.\n{new string(' ', 31)}*FOR CUSTOM BOARD*\n{new string(' ', 20)}Enter board dimension(s) & total mines,\n{new string(' ', 31)}or select default.\n\n{new string(' ', 22)}2. Select whether you would like to:\n{new string(' ', 32)}Step on square - \n{new string(' ', 20)}This could result in detonating a mine!\n{new string(' ', 30)}Flag a square (f) - \n{new string(' ', 18)}Mark squares you're certain contain a mine.\n{new string(' ', 28)}Question a square (?) - \n{new string(' ', 19)}If you're not 100% certain there is a mine.\n\n{new string(' ', 12)}3. Enter coordinates of the square you'd like to select.\n\n{new string(' ', 8)}4. Continue until all squares are either stepped on or flagged.");///////////////////////Write Instructions//note we need to set available flags to # of mines and display how many are unused.//possibly ask if square or rectangular board, then dimension input would equal x&y or x(or)y
+            Console.WriteLine($"\n{new string(' ', 36)}TO PLAY:\n\n{new string(' ', 26)}" +
+                            $"1. Select difficulty level.\n{new string(' ', 31)}" +
+                            $"*FOR CUSTOM BOARD*\n{new string(' ', 20)}Enter board dimension(s) " +
+                            $"& total mines,\n{new string(' ', 31)}or select default.\n\n" +
+                            $"{new string(' ', 22)}2. Select whether you would like to:\n" +
+                            $"{new string(' ', 32)}Step on square - \n{new string(' ', 20)}" +
+                            $"This could result in detonating a mine!\n{new string(' ', 30)}Flag a square (f) - \n" +
+                            $"{new string(' ', 18)}Mark squares you're certain contain a mine." +
+                            $"\n{new string(' ', 28)}Question a square (?) - \n{new string(' ', 19)}" +
+                            $"If you're not 100% certain there is a mine.\n\n{new string(' ', 12)}" +
+                            $"3. Enter coordinates of the square you'd like to select.\n\n{new string(' ', 8)}" +
+                            $"4. Continue until all squares are either stepped on or flagged.");
+            //Write Instructions//note we need to set available flags to # of mines and display how many are unused.
+            //possibly ask if square or rectangular board, then dimension input would equal x&y or x(or)y
+
             Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
             bool yes = YesNo();
             if (yes)
             {
-                MainMenu();
+                LevelSelect();
+
             }
             else
             {
@@ -110,7 +125,7 @@ namespace Midterm
             }
         }
 
-        public static void CreditsStatic()
+        public static void Credits()
         {
             Header();
             //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
@@ -119,7 +134,7 @@ namespace Midterm
             bool yes = YesNo();
             if (yes)
             {
-                MainMenu();
+                LevelSelect();
             }
             else
             {
@@ -173,7 +188,7 @@ namespace Midterm
             bool yes = YesNo();
             if (yes)
             {
-                MainMenu();
+                LevelSelect();
             }
             else
             {
@@ -189,7 +204,7 @@ namespace Midterm
             bool yes = YesNo();
             if (yes)
             {
-                MainMenu();
+                LevelSelect();
             }
             else
             {

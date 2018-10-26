@@ -7,12 +7,8 @@ namespace Midterm
     {
         static void Main(string[] args)
         {
-            //StartMenu();
-
-            Board newBoard = new Board();
-            newBoard.DisplayBoard();
+            UserInput.StartMenu();
+            //UserInput.Instruct();
         }
-
-        
     }
 }

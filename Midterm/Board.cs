@@ -116,6 +116,7 @@ namespace Midterm
             }
             return false;
         }
+
         private void MakeAllMines()
         {
             Random r = new Random();
@@ -152,42 +153,25 @@ namespace Midterm
             return false;
         }
 
-
-        public bool CompletedGame()
+        public void WinsOrLoses()
         {
             if (isMine == true)
             {
                 Console.WriteLine("BOOOOOOOOM!");
                 Console.WriteLine("Oh no, you hit a bomb!");
-                return true;
+                Console.WriteLine(hiddenBoard);  // display hidden board
+                Console.ReadLine();
+
+                UserInput.Credits();
             }
-            return false;
 
-            //if ()
+            //if (## conditional for if all tiles have been selected and they won)
+            //{
+            //    Console.WriteLine(hiddenBoard);
+            //    Console.ReadLine();
 
-            //Console.WriteLine(hiddenBoard);
+            //    UserInput.Credits();
+            //}
         }
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
