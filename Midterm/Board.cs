@@ -153,31 +153,40 @@ namespace Midterm
             return false;
         }
 
-        public void WinsOrLoses()
+        public bool WinsOrLoses()
         {
             if (isMine == true)
             {
                 Console.WriteLine("BOOOOOOOOM!");
                 Console.WriteLine("Oh no, you hit a bomb!");
-                Console.WriteLine(hiddenBoard);  // display hidden board
+                Console.WriteLine(hiddenBoard);  // <-- display hidden board
                 Console.ReadLine();
 
-                UserInput.Credits();
+                return true;
             }
 
-            //if (## conditional for if all tiles have been selected and they won)
-            //{
-            //    Console.WriteLine(hiddenBoard);
-            //    Console.ReadLine();
+            // number of clicked tiles should be equal to all tiles - mines.
+            int numberClicked = 0;
+            foreach (State tile in displayBoard)
+            {
+                if (tile == State.clicked)
+                {
+                    numberClicked++;
+                }
+            }
 
-            //    UserInput.Credits();
-            //}
+            if (displayBoard.Length * (1 - minesPercent) == numberClicked)
+            {
+                Console.WriteLine(hiddenBoard);
+                Console.ReadLine();
+
+                return true;
+            }
+            return false;
         }
 
         public void isFlagged(int row, int column, ConsoleKey inputKey)
         {
-
-
             if (inputKey == ConsoleKey.F)
             {
                 if (displayBoard[row, column] == State.flag)
@@ -200,10 +209,8 @@ namespace Midterm
                     displayBoard[row, column] = State.qmark;
                 }
             }
-
-
-
         }
+
         public void DisplayHiddenBoard()
         {
             char temp = ' ';
@@ -229,8 +236,5 @@ namespace Midterm
                 Console.WriteLine();
             }
         }
-
-
-
     }
 }

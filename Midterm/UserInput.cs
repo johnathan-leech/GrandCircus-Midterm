@@ -5,7 +5,7 @@ namespace Midterm
 {
     class UserInput
     {
-        public static void Header()//Header clears each page and displays title
+        public static void Header() //Header clears each page and displays title
         {
             Console.Clear();
             Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!\n");
@@ -13,7 +13,7 @@ namespace Midterm
 
         public static void StartMenu()
         {
-            bool retry = true;//bool to loop entire method when entry is invalid
+            bool retry = true;  //bool to loop entire method when entry is invalid
             while (retry)
             {
                 Header();

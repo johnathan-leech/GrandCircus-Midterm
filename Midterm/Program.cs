@@ -9,6 +9,14 @@ namespace Midterm
         {
             UserInput.StartMenu();
             //UserInput.Instruct();
+
+
+            Board b = new Board();
+            if (!b.WinsOrLoses())
+            {
+                UserInput.Credits();
+            }
+
         }
     }
 }
