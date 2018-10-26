@@ -3,7 +3,7 @@ Minefield by Nicholas, Ty, Johnathan, Katie
  */
 using System;
 using System.Collections.Generic;
-namespace ConsoleApp9
+namespace Midterm
 {
     class Program
     {

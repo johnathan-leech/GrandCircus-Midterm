@@ -123,7 +123,7 @@ namespace Midterm
             if (displayBoard[row, column] == State.hidden)
             {
                 displayBoard[row, column] = State.clicked;
-                if (hiddenBoard[row, column] == 0)
+                if (hiddenBoard[row, column] == 0) // If there are no mines next to this one, reveal all the tiles next to it. 
                 {
                     for (int i = row - 1; i <= row + 1; i++)
                     {
@@ -151,6 +151,7 @@ namespace Midterm
         private void MakeAllMines()
         {
             Random r = new Random();
+            // trys to create a mine and adds one to i each time a mine is made.
             for (int i = 0; i < rows * columns * minesPercent; i += MakesMine(r.Next() % rows, r.Next() % columns) ? 1 : 0) ;
         }
 
