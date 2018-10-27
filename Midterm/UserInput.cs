@@ -182,7 +182,7 @@ namespace Midterm
 
                 Board.BoardDimensions(input[2], input[3], input[4]);
             }
-        }////////////////////////////////////////////////////////////////////////////////////
+        }
 
         public static bool YesNo()
         {
@@ -220,7 +220,7 @@ namespace Midterm
             }
         }
 
-        /*public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus////DELETE********
+        public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
         {
             Header();
             Console.WriteLine($"\n{new string(' ', 30)}Board dimension is {dimension}");
@@ -236,9 +236,9 @@ namespace Midterm
             {
                 Exit();
             }
-        }
+        } 
 
-        public static void CustomXY()///////////////////////////////////////////////////temp method to test menus////////////DELETE********
+        /*public static void CustomXY()
         {
             Header();
             Console.WriteLine($"{new string(' ', 30)}user input xy & mines");
@@ -252,7 +252,7 @@ namespace Midterm
             {
                 Exit();
             }
-        }*/
+        } */
 
         public static int KeyToNum(ConsoleKey key)
         {
@@ -268,7 +268,7 @@ namespace Midterm
             else { return 0; }
         }
 
-        /*//////////////////////////////////////////////////////////////////////////////////////DELETE********************
+       
         // needs to take user input for row, column selection
         public static Tuple<int, int> TakeCoordinates()
         {
@@ -282,7 +282,7 @@ namespace Midterm
         }
 
         // need to add 'make a loop of play' in order to get continuous display and input
-        */
+        
 
     }
 }
