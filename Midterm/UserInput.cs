@@ -269,7 +269,36 @@ namespace Midterm
             else { return 0; }
         }
 
+        public static void Playstate(Board game)
+        {
+            Tuple<int,int> inputCord;
+            while(game.WinsOrLoses())
+            {
+                game.DisplayBoard();
+                System.Console.WriteLine("(C)lick/(F)lag/(Q)mark");
+                switch(Console.ReadKey().Key)
+                {
+                    case ConsoleKey.F:
+                        inputCord = TakeCoordinates();
+                    break;
+                    case ConsoleKey.C:
+                        inputCord = TakeCoordinates();
+                        if(game.RevealTile(inputCord.Item1,inputCord.Item2))
+                        {
+                            
+                        }
 
+                    break;
+                    case ConsoleKey.Q:
+                        inputCord = TakeCoordinates();
+                        
+                    break;
+                    default:
+                    System.Console.WriteLine("Sorry I don't know that key");
+                    break;
+                }
+            }
+        }
        
         // needs to take user input for row, column selection
         public static Tuple<int, int> TakeCoordinates()
