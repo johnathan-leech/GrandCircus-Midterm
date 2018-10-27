@@ -314,10 +314,12 @@ namespace Midterm
                 
                 try
                 {
-                    Console.Write("Please enter a number for the row ");
-                    int inputRow = int.Parse(Console.ReadLine());
                     Console.WriteLine();
+                    Console.Write("Please enter a number for the row ");
+                    Console.WriteLine();
+                    int inputRow = int.Parse(Console.ReadLine());
                     Console.Write("Please enter a number for the column");
+                    Console.WriteLine();
                     int inputColumn = int.Parse(Console.ReadLine());
                     indexInput = Tuple.Create(inputRow, inputColumn);
                     
