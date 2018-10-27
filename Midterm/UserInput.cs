@@ -182,7 +182,7 @@ namespace Midterm
 
                 Board.BoardDimensions(input[2], input[3], input[4]);
             }
-        }////////////////////////////////////////////////////////////////////////////////////
+        }
 
         public static bool YesNo()
         {
@@ -220,6 +220,41 @@ namespace Midterm
             }
         }
 
+
+        public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
+        {
+            Header();
+            Console.WriteLine($"\n{new string(' ', 30)}Board dimension is {dimension}");
+            Board newgame = new Board(dimension, dimension);
+            //return newgame;
+            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
+            bool yes = YesNo();
+            if (yes)
+            {
+                LevelSelect();
+            }
+            else
+            {
+                Exit();
+            }
+        } 
+
+        /*public static void CustomXY()
+        {
+            Header();
+            Console.WriteLine($"{new string(' ', 30)}user input xy & mines");
+            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
+            bool yes = YesNo();
+            if (yes)
+            {
+                LevelSelect();
+            }
+            else
+            {
+                Exit();
+            }
+        } */
+
         public static int KeyToNum(ConsoleKey key)
         {
             if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1) { return 1; }
@@ -233,5 +268,24 @@ namespace Midterm
             else if (key == ConsoleKey.D9 || key == ConsoleKey.NumPad9) { return 9; }
             else { return 0; }
         }
+
+
+       
+        // needs to take user input for row, column selection
+        public static Tuple<int, int> TakeCoordinates()
+        {
+            Console.Write("Please enter 0-9 for the row ");
+            int inputRow = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.Write("Please enter 0-9 for the column");
+            int inputColumn = int.Parse(Console.ReadLine());
+            var indexInput = Tuple.Create(inputRow, inputColumn);
+            return indexInput;
+        }
+
+        // need to add 'make a loop of play' in order to get continuous display and input
+        
+
+
     }
 }
