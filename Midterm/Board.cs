@@ -88,7 +88,7 @@ namespace Midterm
             Console.WriteLine();
 
 
-            for (int i = 0; i < columns; i++)
+            for (int i = 0; i < rows; i++)
             {
                 Console.Write("{0, -4}", xAxisCounter);
                 for (int j = 0; j < columns; j++)
@@ -253,9 +253,9 @@ namespace Midterm
         public void DisplayHiddenBoard()
         {
             char temp = ' ';
-            for (int i = 0; i < columns; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < rows; j++)
+                for (int j = 0; j < columns; j++)
                 {
                     switch (hiddenBoard[i, j])
                     {
