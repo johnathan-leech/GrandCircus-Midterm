@@ -291,7 +291,7 @@ namespace Midterm
                             break;
                         case ConsoleKey.Q:
                             inputCord = TakeCoordinates();
-                            game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.F);
+                            game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.Q);
                             break;
                         default:
                             System.Console.WriteLine("Sorry I don't know that key");
