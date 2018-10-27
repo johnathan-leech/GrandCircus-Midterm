@@ -272,7 +272,7 @@ namespace Midterm
         public static void Playstate(Board game)
         {
             Tuple<int,int> inputCord;
-            while(game.WinsOrLoses())
+            while(!game.WinsOrLoses())
             {
                 game.DisplayBoard();
                 System.Console.WriteLine("(C)lick/(F)lag/(Q)mark");

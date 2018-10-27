@@ -175,7 +175,7 @@ namespace Midterm
 
         public bool WinsOrLoses()
         {
-            if (isMine == false)
+            if (isMine == true)
             {
                 Console.WriteLine("BOOOOOOOOM!");
                 Console.WriteLine("Oh no, you hit a bomb!");
