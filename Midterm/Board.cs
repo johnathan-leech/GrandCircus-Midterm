@@ -23,12 +23,10 @@ namespace Midterm
 
         public Board(int row, int column)
         {
-            // do we even need this Method, considering the following Method?
+            // do we even need this Method, considering the following Method? *****Don't need default either, I'll let you guys delete
             rows = row;
             columns = column;
             minesPercent = .15;
-            Console.WriteLine("Board created using xy");///////////////////testing
-            Console.ReadLine();//////////////////////testing remove when app works
             InitializeBoard();
         }
 
@@ -37,8 +35,6 @@ namespace Midterm
             rows = row;
             columns = column;
             this.minesPercent = minesPercent;
-            Console.WriteLine("Board created using xy + mines%");///////////testing
-            Console.ReadLine();//////////////////////testing remove when app works
             InitializeBoard();
         }
 
@@ -47,11 +43,8 @@ namespace Midterm
         {
             int row = xy;
             int column = xy;
-            Board gameBoard = new Board(row, column);
-            //test
-            Console.WriteLine("\ndimension sent");//testing
-            Console.ReadLine();//testing remove when app works
-
+            double minesPercent = .15;
+            Board gameBoard = new Board(row, column, minesPercent);
             gameBoard.DisplayBoard();
         }
 
@@ -62,10 +55,6 @@ namespace Midterm
             int minesTotal = mines;
             double minesPercent = mines / (x * y);
             Board gameBoard = new Board(row, column, minesPercent);
-            //test
-            Console.WriteLine("\ndimension sent");//testing
-            Console.ReadLine();//testing remove when app works
-
             gameBoard.DisplayBoard();
         }///////////////////////////////////////////////////////////////////////////
 
