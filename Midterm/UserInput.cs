@@ -61,11 +61,9 @@ namespace Midterm
             {
                 Header();
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
-                menu.Add(new KeyValuePair<string, Action>("Beginner", () => Board.BoardDimensions(10)));
-                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(15)));
-                menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
-                menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
-                menu.Add(new KeyValuePair<string, Action>("Expert", () => Board.BoardDimensions(40)));
+                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(8)));
+                menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(15)));
+                menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(25)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
                 menu.Add(new KeyValuePair<string, Action>("Return to Start Menu", () => StartMenu()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Exit()));
@@ -237,7 +235,7 @@ namespace Midterm
             {
                 Exit();
             }
-        } 
+        }
 
         /*public static void CustomXY()
         {
@@ -290,7 +288,6 @@ namespace Midterm
                             {
                                 Console.WriteLine("Cannot Click");
                             }
-
                             break;
                         case ConsoleKey.Q:
                             inputCord = TakeCoordinates();
@@ -335,7 +332,7 @@ namespace Midterm
         }
 
         // need to add 'make a loop of play' in order to get continuous display and input
-        
+
 
 
     }
