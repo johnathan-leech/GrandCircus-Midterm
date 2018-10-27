@@ -46,7 +46,10 @@ namespace Midterm
                 if (entry > 0 && entry <= menu.Count)//checks for valid entry
                 {
                     menu[entry - 1].Value.Invoke();//invokes method
-                    retry = false;
+                    if (entry == 1 || entry == menu.Count)
+                    {
+                        retry = false;
+                    }
                 }
             }
         }
