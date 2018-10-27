@@ -190,7 +190,7 @@ namespace Midterm
 
         public bool WinsOrLoses()
         {
-            if (isMine == false)
+            if (isMine == true)
             {
                 Console.WriteLine("BOOOOOOOOM!");
                 Console.WriteLine("Oh no, you hit a bomb!");
@@ -212,7 +212,7 @@ namespace Midterm
 
             if (displayBoard.Length * (1 - minesPercent) == numberClicked)
             {
-                Console.WriteLine(hiddenBoard);
+                DisplayHiddenBoard();  // <-- display hidden board
                 Console.ReadLine();
 
                 return true;
