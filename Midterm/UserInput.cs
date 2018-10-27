@@ -220,40 +220,6 @@ namespace Midterm
             }
         }
 
-        /*public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus////DELETE********
-        {
-            Header();
-            Console.WriteLine($"\n{new string(' ', 30)}Board dimension is {dimension}");
-            Board newgame = new Board(dimension, dimension);
-            //return newgame;
-            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
-            bool yes = YesNo();
-            if (yes)
-            {
-                LevelSelect();
-            }
-            else
-            {
-                Exit();
-            }
-        }
-
-        public static void CustomXY()///////////////////////////////////////////////////temp method to test menus////////////DELETE********
-        {
-            Header();
-            Console.WriteLine($"{new string(' ', 30)}user input xy & mines");
-            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
-            bool yes = YesNo();
-            if (yes)
-            {
-                LevelSelect();
-            }
-            else
-            {
-                Exit();
-            }
-        }*/
-
         public static int KeyToNum(ConsoleKey key)
         {
             if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1) { return 1; }
@@ -267,16 +233,5 @@ namespace Midterm
             else if (key == ConsoleKey.D9 || key == ConsoleKey.NumPad9) { return 9; }
             else { return 0; }
         }
-
-        /*//////////////////////////////////////////////////////////////////////////////////////DELETE********************
-        // needs to take user input for row, column selection
-        public static void TakeCoordinates()
-        {
-
-        }
-
-        // need to add 'make a loop of play' in order to get continuous display and input
-        */
-
     }
 }
