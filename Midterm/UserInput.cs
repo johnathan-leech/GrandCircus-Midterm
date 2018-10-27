@@ -272,12 +272,26 @@ namespace Midterm
         // needs to take user input for row, column selection
         public static Tuple<int, int> TakeCoordinates()
         {
-            Console.Write("Please enter 0-9 for the row ");
-            int inputRow = int.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.Write("Please enter 0-9 for the column");
-            int inputColumn = int.Parse(Console.ReadLine());
-            var indexInput = Tuple.Create(inputRow, inputColumn);
+            var indexInput = Tuple.Create(0,0);
+            for (int i = 0; i == 0;)
+            {
+                
+                try
+                {
+                    Console.Write("Please enter a number for the row ");
+                    int inputRow = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
+                    Console.Write("Please enter a number for the column");
+                    int inputColumn = int.Parse(Console.ReadLine());
+                    indexInput = Tuple.Create(inputRow, inputColumn);
+                    
+                    i++;
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a valid number");
+                } 
+            }
             return indexInput;
         }
 
