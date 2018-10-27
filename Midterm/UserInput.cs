@@ -227,9 +227,15 @@ namespace Midterm
         }
 
         // needs to take user input for row, column selection
-        public static void TakeCoordinates()
+        public static Tuple<int, int> TakeCoordinates()
         {
-
+            Console.Write("Please enter 0-9 for the row ");
+            int inputRow = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.Write("Please enter 0-9 for the column");
+            int inputColumn = int.Parse(Console.ReadLine());
+            var indexInput = Tuple.Create(inputRow, inputColumn);
+            return indexInput;
         }
 
         // need to add 'make a loop of play' in order to get continuous display and input
