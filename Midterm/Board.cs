@@ -104,13 +104,13 @@ namespace Midterm
                                 displayChar = '-';
                             break;
                         case State.flag:
-                            displayChar = (char)213; //''
+                            displayChar = 'A'; //''
                             break;
                         case State.hidden:
                             displayChar = '#'; //''
                             break;
                         case State.qmark:
-                            displayChar = '?';
+                            displayChar = 'F';
                             break;
                     }
                     Console.Write(displayChar + "  ");
