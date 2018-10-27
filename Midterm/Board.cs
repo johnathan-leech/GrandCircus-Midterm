@@ -97,7 +97,7 @@ namespace Midterm
                     switch (displayBoard[i, j])
                     {
                         case State.clicked:
-                            displayChar = (char)(hiddenBoard[i, j] + '0');
+                            displayChar = (char)(hiddenBoard[i, j]);
                             if (displayChar == '9')
                                 displayChar = '\u0042'; //'*'
                             if (displayChar == '0')
@@ -110,7 +110,7 @@ namespace Midterm
                             displayChar = '#'; //''
                             break;
                         case State.qmark:
-                            displayChar = (char)84;
+                            displayChar = '?';
                             break;
                     }
                     Console.Write(displayChar + "  ");
