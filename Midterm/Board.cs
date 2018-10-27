@@ -38,6 +38,33 @@ namespace Midterm
             InitializeBoard();
         }
 
+        ////////////////////////////////////sending dimensions from UserInput class
+        public static void BoardDimensions(int xy)
+        {
+            int row = xy;
+            int column = xy;
+            Board gameBoard = new Board(row, column);
+            //test
+            Console.WriteLine("\ndimension sent");//testing
+            Console.ReadLine();//testing remove when app works
+
+            gameBoard.DisplayBoard();
+        }
+
+        public static void BoardDimensions(int x, int y, int mines)
+        {
+            int row = x;
+            int column = y;
+            int minesTotal = mines;
+            double minesPercent = mines / (x * y);
+            Board gameBoard = new Board(row, column, minesPercent);
+            //test
+            Console.WriteLine("\ndimension sent");//testing
+            Console.ReadLine();//testing remove when app works
+
+            gameBoard.DisplayBoard();
+        }///////////////////////////////////////////////////////////////////////////
+
         private void InitializeBoard()
         {
             hiddenBoard = new int[rows, columns];
