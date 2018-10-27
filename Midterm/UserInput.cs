@@ -46,7 +46,10 @@ namespace Midterm
                 if (entry > 0 && entry <= menu.Count)//checks for valid entry
                 {
                     menu[entry - 1].Value.Invoke();//invokes method
-                    retry = false;
+                    if (entry == 1 || entry == menu.Count)
+                    {
+                        retry = false;
+                    }
                 }
             }
         }
@@ -58,11 +61,11 @@ namespace Midterm
             {
                 Header();
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
-                menu.Add(new KeyValuePair<string, Action>("Beginner", () => InitializeBoard(10)));
-                menu.Add(new KeyValuePair<string, Action>("Easy", () => InitializeBoard(15)));
-                menu.Add(new KeyValuePair<string, Action>("Intermediate", () => InitializeBoard(20)));
-                menu.Add(new KeyValuePair<string, Action>("Hard", () => InitializeBoard(30)));
-                menu.Add(new KeyValuePair<string, Action>("Expert", () => InitializeBoard(40)));
+                menu.Add(new KeyValuePair<string, Action>("Beginner", () => Board.BoardDimensions(10)));
+                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(15)));
+                menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
+                menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
+                menu.Add(new KeyValuePair<string, Action>("Expert", () => Board.BoardDimensions(40)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
                 menu.Add(new KeyValuePair<string, Action>("Return to Start Menu", () => StartMenu()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Exit()));
@@ -112,17 +115,8 @@ namespace Midterm
             //Write Instructions//note we need to set available flags to # of mines and display how many are unused.
             //possibly ask if square or rectangular board, then dimension input would equal x&y or x(or)y
 
-            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
-            bool yes = YesNo();
-            if (yes)
-            {
-                LevelSelect();
-
-            }
-            else
-            {
-                Exit();
-            }
+            Console.Write($"\n{new string(' ', 25)}Press any key to continue...  ");
+            Console.ReadKey();
         }
 
         public static void Credits()
@@ -130,17 +124,65 @@ namespace Midterm
             Header();
             //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
             Console.WriteLine($"\n{new string(' ', 36)}CREDITS\n\n{new string(' ', 31)}DEVELOPMENT TEAM: \n\n{new string(' ', 28)}LEADER: NICHOLAS LANDAU\n{new string(' ', 32)}JONATHAN  LEECH\n{new string(' ', 33)}KATIE HARRELL\n{new string(' ', 35)}TY CARRON\n\n");///////////////////////Write Credits///////NEED TEAM NAME!
-            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
-            bool yes = YesNo();
-            if (yes)
-            {
-                LevelSelect();
-            }
-            else
-            {
-                Exit();
-            }
+            Console.Write($"\n{new string(' ', 25)}Press any key to continue...  ");
+            Console.ReadKey();
         }
+
+        /////////////////////////////////////////////////////////////////////////////////////still working on
+        public static void CustomXY()//sets custom properties
+        {
+            bool retry = true;
+            Header();
+
+            while (retry)
+            {
+                //default values
+                int[] input = new int[5] { 2, 0, 0, 0, 0 };//0=set, 1=input, 2=rows, 3=columns, 4=mines
+                bool set = true;
+                ConsoleKey key = ConsoleKey.Enter;
+
+                Console.WriteLine("\nEnter Cell Dimensions (10 - 99)");//currently only allows 2 digit input
+
+                while (set)//loops to set row, column, and mines
+                {
+                    switch (input[0])//display which value will be set
+                    {
+                        case 2:
+                            Console.Write("\n\nRows:  ");
+                            break;
+                        case 3:
+                            Console.Write("\n\nColumns:  ");
+                            break;
+                        case 4:
+                            Console.Write("\n\nMines:  ");
+                            break;
+                    }
+
+                    input[1] = KeyToNum(key);//enter first digit
+                    for (int i = 0; i < 2; i++)//loops per digit
+                    {
+                        key = Console.ReadKey().Key;
+                        if (input[1] >= 1 && input[1] < 10)
+                        {
+                            Console.Write(input[1]);
+                        }
+                        input[1] = input[1] * 10 + KeyToNum(key);
+                    }
+                    if (input[1] > 9 && input[1] < 100)
+                    {
+                        input[input[0]] = input[1];
+                        input[0] += 1;//set next index
+                        if (input[0] == 5)//break out after all values set
+                        {
+                            set = false;
+                        }
+                    }
+                }
+                int minesPercent = input[4] / (input[2] * input[3]) * 100;
+
+                Board.BoardDimensions(input[2], input[3], input[4]);
+            }
+        }////////////////////////////////////////////////////////////////////////////////////
 
         public static bool YesNo()
         {
@@ -178,7 +220,7 @@ namespace Midterm
             }
         }
 
-        public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
+        /*public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus////DELETE********
         {
             Header();
             Console.WriteLine($"\n{new string(' ', 30)}Board dimension is {dimension}");
@@ -196,7 +238,7 @@ namespace Midterm
             }
         }
 
-        public static void CustomXY()///////////////////////////////////////////////////temp method to test menus
+        public static void CustomXY()///////////////////////////////////////////////////temp method to test menus////////////DELETE********
         {
             Header();
             Console.WriteLine($"{new string(' ', 30)}user input xy & mines");
@@ -210,7 +252,7 @@ namespace Midterm
             {
                 Exit();
             }
-        }
+        }*/
 
         public static int KeyToNum(ConsoleKey key)
         {
@@ -226,6 +268,7 @@ namespace Midterm
             else { return 0; }
         }
 
+        /*//////////////////////////////////////////////////////////////////////////////////////DELETE********************
         // needs to take user input for row, column selection
         public static Tuple<int, int> TakeCoordinates()
         {
@@ -239,7 +282,7 @@ namespace Midterm
         }
 
         // need to add 'make a loop of play' in order to get continuous display and input
-
+        */
 
     }
 }
