@@ -121,12 +121,14 @@ namespace Midterm
         {
             Header();
             //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
-            Console.WriteLine($"\n{new string(' ', 36)}CREDITS\n\n{new string(' ', 31)}DEVELOPMENT TEAM: \n\n{new string(' ', 28)}LEADER: NICHOLAS LANDAU\n{new string(' ', 32)}JONATHAN  LEECH\n{new string(' ', 33)}KATIE HARRELL\n{new string(' ', 35)}TY CARRON\n\n");///////////////////////Write Credits///////NEED TEAM NAME!
+            Console.WriteLine($"\n{new string(' ', 36)}CREDITS\n\n{new string(' ', 34)}TEAM 'BOOM': \n\n" +
+                            $"{new string(' ', 32)}NICHOLAS LANDAU\n{new string(' ', 32)}JOHNATHAN LEECH\n" +
+                            $"{new string(' ', 33)}KATIE HARRELL\n{new string(' ', 35)}TY CARRON\n\n");//Write Credits//NEED TEAM NAME!
             Console.Write($"\n{new string(' ', 25)}Press any key to continue...  ");
             Console.ReadKey();
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////still working on
+        ///////////still working on
         public static void CustomXY()//sets custom properties
         {
             bool retry = true;
@@ -218,13 +220,11 @@ namespace Midterm
             }
         }
 
-
         public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
         {
             Header();
             Console.WriteLine($"\n{new string(' ', 30)}Board dimension is {dimension}");
             Board newgame = new Board(dimension, dimension);
-            //return newgame;
             Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
             bool yes = YesNo();
             if (yes)
@@ -269,8 +269,8 @@ namespace Midterm
 
         public static void Playstate(Board game)
         {
-            Tuple<int,int> inputCord;
-            while(!game.WinsOrLoses())
+            Tuple<int, int> inputCord;
+            while (!game.WinsOrLoses())
             {
                 game.DisplayBoard();
                 try
@@ -298,20 +298,20 @@ namespace Midterm
                             break;
                     }
                 }
-                catch(IndexOutOfRangeException)
+                catch (IndexOutOfRangeException)
                 {
                     Console.WriteLine("Invalid Corn");
                 }
             }
         }
-       
+
         // needs to take user input for row, column selection
         public static Tuple<int, int> TakeCoordinates()
         {
-            var indexInput = Tuple.Create(0,0);
+            var indexInput = Tuple.Create(0, 0);
             for (int i = 0; i == 0;)
             {
-                
+
                 try
                 {
                     Console.Write("Please enter a number for the row ");
@@ -320,13 +320,13 @@ namespace Midterm
                     Console.Write("Please enter a number for the column");
                     int inputColumn = int.Parse(Console.ReadLine());
                     indexInput = Tuple.Create(inputRow, inputColumn);
-                    
+
                     i++;
                 }
                 catch
                 {
                     Console.WriteLine("Please enter a valid number");
-                } 
+                }
             }
             return indexInput;
         }

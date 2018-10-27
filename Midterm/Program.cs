@@ -7,11 +7,7 @@ namespace Midterm
     {
         static void Main(string[] args)
         {
-            UserInput.Playstate(new Board(20,20,.05));
             UserInput.StartMenu();
-
-            
-
         }
     }
 }

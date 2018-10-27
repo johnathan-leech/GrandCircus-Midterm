@@ -37,7 +37,7 @@ namespace Midterm
             InitializeBoard();
         }
 
-        //////////////////////////////////sending dimensions from UserInput class
+        //sending dimensions from UserInput class
         public static void BoardDimensions(int xy)
         {
             int row = xy;
@@ -56,7 +56,7 @@ namespace Midterm
             double minesPercent = mines / (x * y);
             Board gameBoard = new Board(row, column, minesPercent);
             gameBoard.DisplayBoard();
-        }///////////////////////////////////////////////////////////////////////////
+        }
 
         private void InitializeBoard()
         {
@@ -87,7 +87,6 @@ namespace Midterm
             }
             Console.WriteLine();
 
-
             for (int i = 0; i < columns; i++)
             {
                 Console.Write("{0, -4}", xAxisCounter);
@@ -97,20 +96,20 @@ namespace Midterm
                     switch (displayBoard[i, j])
                     {
                         case State.clicked:
-                            displayChar = (char)(hiddenBoard[i, j]);
+                            displayChar = (char)(hiddenBoard[i, j] + '0');
                             if (displayChar == '9')
                                 displayChar = '\u0042'; //'*'
                             if (displayChar == '0')
                                 displayChar = '-';
                             break;
                         case State.flag:
-                            displayChar = 'A'; //''
+                            displayChar = 'F'; //''
                             break;
                         case State.hidden:
                             displayChar = '#'; //''
                             break;
                         case State.qmark:
-                            displayChar = 'F';
+                            displayChar = '?';
                             break;
                     }
                     Console.Write(displayChar + "  ");
