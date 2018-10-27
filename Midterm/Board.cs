@@ -23,7 +23,6 @@ namespace Midterm
 
         public Board(int row, int column)
         {
-            // do we even need this Method, considering the following Method? *****Don't need default either, I'll let you guys delete
             rows = row;
             columns = column;
             minesPercent = .15;
@@ -38,13 +37,14 @@ namespace Midterm
             InitializeBoard();
         }
 
-        ////////////////////////////////////sending dimensions from UserInput class
+        //////////////////////////////////sending dimensions from UserInput class
         public static void BoardDimensions(int xy)
         {
             int row = xy;
             int column = xy;
             double minesPercent = .15;
             Board gameBoard = new Board(row, column, minesPercent);
+            Console.Clear();
             gameBoard.DisplayBoard();
         }
 
@@ -75,11 +75,25 @@ namespace Midterm
 
         public void DisplayBoard()
         {
+            int yAxisCounter = 0;
+            int xAxisCounter = 0;
             char displayChar = ' ';
+
+            Console.Write("    ");
+
+            for (; yAxisCounter < columns; yAxisCounter++)
+            {
+                Console.Write("{0, -3}", yAxisCounter);
+            }
+            Console.WriteLine();
+
+
             for (int i = 0; i < columns; i++)
             {
+                Console.Write("{0, -4}", xAxisCounter);
                 for (int j = 0; j < columns; j++)
                 {
+                    yAxisCounter++;
                     switch (displayBoard[i, j])
                     {
                         case State.clicked:
@@ -99,8 +113,9 @@ namespace Midterm
                             displayChar = (char)84;
                             break;
                     }
-                    Console.Write(displayChar + " ");
+                    Console.Write(displayChar + "  ");
                 }
+                xAxisCounter++;
                 Console.WriteLine();
             }
         }
