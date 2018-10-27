@@ -205,7 +205,7 @@ namespace Midterm
             return false;
         }
 
-        public void isFlagged(int row, int column, ConsoleKey inputKey)
+        public void IsFlagged(int row, int column, ConsoleKey inputKey)
         {
             if (displayBoard[row, column] == State.clicked)
             {

@@ -220,6 +220,7 @@ namespace Midterm
             }
         }
 
+
         public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
         {
             Header();
@@ -268,6 +269,7 @@ namespace Midterm
             else { return 0; }
         }
 
+
        
         // needs to take user input for row, column selection
         public static Tuple<int, int> TakeCoordinates()
@@ -283,6 +285,7 @@ namespace Midterm
 
         // need to add 'make a loop of play' in order to get continuous display and input
         
+
 
     }
 }
