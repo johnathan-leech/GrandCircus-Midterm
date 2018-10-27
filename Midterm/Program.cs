@@ -7,6 +7,8 @@ namespace Midterm
     {
         static void Main(string[] args)
         {
+            Board b = new Board();
+            UserInput.Playstate(b);
             UserInput.StartMenu();
 
 
