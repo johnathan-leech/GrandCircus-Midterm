@@ -27,6 +27,8 @@ namespace Midterm
             rows = row;
             columns = column;
             minesPercent = .15;
+            Console.WriteLine("Board created using xy");///////////////////testing
+            Console.ReadLine();//////////////////////testing remove when app works
             InitializeBoard();
         }
 
@@ -35,6 +37,8 @@ namespace Midterm
             rows = row;
             columns = column;
             this.minesPercent = minesPercent;
+            Console.WriteLine("Board created using xy + mines%");///////////testing
+            Console.ReadLine();//////////////////////testing remove when app works
             InitializeBoard();
         }
 
