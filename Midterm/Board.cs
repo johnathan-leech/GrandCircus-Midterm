@@ -45,7 +45,8 @@ namespace Midterm
             double minesPercent = .15;
             Board gameBoard = new Board(row, column, minesPercent);
             Console.Clear();
-            gameBoard.DisplayBoard();
+            //gameBoard.DisplayBoard();
+            UserInput.Playstate(gameBoard);
         }
 
         public static void BoardDimensions(int x, int y, int mines)
@@ -55,7 +56,8 @@ namespace Midterm
             int minesTotal = mines;
             double minesPercent = mines / 100;
             Board gameBoard = new Board(row, column, minesPercent);
-            gameBoard.DisplayBoard();
+            //gameBoard.DisplayBoard();
+            UserInput.Playstate(gameBoard);
         }///////////////////////////////////////////////////////////////////////////
 
         private void InitializeBoard()
