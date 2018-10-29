@@ -134,7 +134,7 @@ namespace Midterm
             Console.WriteLine(new string(' ', (width - line5.Length) / 2) + line5);
             Console.WriteLine(new string(' ', (width - line6.Length) / 2) + line6);
             Console.WriteLine(Environment.NewLine);
-            Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
+            Console.Write(new string(' ', (width - end.Length) / 2) + end);
             Console.ReadKey();
         }
 
@@ -149,15 +149,19 @@ namespace Midterm
                 $"DEV TEAM: BOOM!\n\n{new string(' ', (width - 15) / 2)}NICHOLAS LANDAU\n{new string(' ', (width - 15) / 2)}" +
                 $"JOHNATHAN LEECH\n{new string(' ', (width - 13) / 2)}KATIE HARRELL\n{new string(' ', (width - 9) / 2)}TY CARRON\n\n");
             Console.WriteLine(Environment.NewLine);
+<<<<<<< HEAD
             //Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
             //Console.ReadKey();
+=======
+            Console.Write(new string(' ', (width - end.Length) / 2) + end);
+            Console.ReadKey();
+>>>>>>> 096fede257291fd25e51102954b6910b0a706a6a
         }
 
         public static void CustomXY()//sets custom board settings
         {
             Header();
             int width = Console.WindowWidth;
-            string invalid = "INVALID";
             //default values
             int[] input = new int[5] { 2, 0, 0, 0, 0 };//0=set, 1=input, 2=rows, 3=columns, 4=mines
             bool set = true;
@@ -165,7 +169,7 @@ namespace Midterm
             int maxWindowWidth = Console.LargestWindowWidth;
             int maxWindowHeight = Console.LargestWindowHeight;
             int maxRow = maxWindowHeight - (maxWindowHeight % 10) - 10;
-            int maxCol = (maxWindowWidth / 2) - ((maxWindowWidth / 2) % 10) - 10;
+            int maxCol = (maxWindowWidth / 3) - ((maxWindowWidth / 3) % 10) - 10;
 
             while (set)//loops to set row, column, and mines
             {
@@ -195,7 +199,6 @@ namespace Midterm
                     else
                     {
                         i = -1;//if either number is invalid, reset
-                        Console.Write($"\n{new string(' ', (width - invalid.Length) / 2)}" + invalid);
                         if (input[0] == 2) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
                         else if (input[0] == 3) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
                         else if (input[0] == 4) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
@@ -238,6 +241,7 @@ namespace Midterm
                     }
                     input[1] = tens + single;//combines input value
                 }
+
                 if (input[0] == 4)//validate double digit value mines
                 {
                     if (input[1] > 9 && input[1] <= 50)
@@ -265,10 +269,6 @@ namespace Midterm
                         input[input[0]] = input[1];//save value to array
                         input[0] += 1;//set next index
                     }
-                }
-                else
-                {
-                    Console.Write($"\n{new string(' ', (width - invalid.Length) / 2)}" + invalid);
                 }
             }
             Board.BoardDimensions(input[2], input[3], input[4]);
