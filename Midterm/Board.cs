@@ -268,7 +268,7 @@ namespace Midterm
             {
                 DisplayHiddenBoard();  // <-- display hidden board
                 
-                UserInput.RecentScores(stopwatch.ToString());
+                UserInput.RecentScores(stopwatch.Elapsed.ToString(@"mm\:ss\.ff"));
                 UserInput.RecentScoreReader();
 
                 Console.ReadLine();
