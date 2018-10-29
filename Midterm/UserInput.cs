@@ -59,8 +59,7 @@ namespace Midterm
             var indexInput = Tuple.Create(0, 0);
 
             Console.WriteLine();
-            Console.Write("Please enter a number for the row({0}-{1})", 1, maxRow);
-            Console.WriteLine();
+            Console.Write("Please enter a number for the row({0}-{1}): ", 1, maxRow);
 
             int inputRow;
             while (true)
@@ -76,8 +75,7 @@ namespace Midterm
                     Console.WriteLine("That is not a number");
                 }
             }
-            Console.Write("Please enter a number for the column({0}-{1})", 1, maxCol);
-            Console.WriteLine();
+            Console.Write("Please enter a number for the column({0}-{1}): ", 1, maxCol);
             int inputColumn;
             while (true)
             {
@@ -99,8 +97,8 @@ namespace Midterm
             Console.WriteLine();
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
-            StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(score+ " "+name+" "+mode);
+            StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true); 
+            scoreWriter.WriteLine(score+ "\u1234"+name+"\u1234"+mode);
             scoreWriter.Close();
             Board.stopwatch.Reset();
         }
@@ -133,7 +131,7 @@ namespace Midterm
             scoreList.Sort();
             for(int i = 0; i < scoreList.Count; i++)
             {
-                    string[] sortedScoreList = scoreList[i].Split(' ');
+                    string[] sortedScoreList = scoreList[i].Split('\u1234');
                     Console.WriteLine("{0}'s Score: {1} Board Size {2}", sortedScoreList[1], sortedScoreList[0], sortedScoreList[2]);
             }
 
