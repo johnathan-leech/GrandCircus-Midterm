@@ -365,7 +365,6 @@ namespace Midterm
                             }
                             break;
                         case State.hidden:
-                            //Console.ForegroundColor = ConsoleColor.Cyan;
                             temp = '#'; //''
                             if (hiddenBoard[i, j] == 9)
                             {
@@ -384,7 +383,6 @@ namespace Midterm
                 Console.WriteLine();
             }
             Console.WriteLine("\n\n");
-            //DisplayBoard();
             stopwatch.Stop();
         }
     }
