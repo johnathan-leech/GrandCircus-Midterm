@@ -14,7 +14,7 @@ namespace Midterm
 
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine(new string(' ', (width - head.Length) / 2) + head);
-            Console.WriteLine(new string(' ', (width - count.Length) / 2) + count);
+            Console.WriteLine(new string(' ', (width - count.Length) / 2) + count + Board.counter);
             Console.WriteLine(new string(' ', (width - timer.Length) / 2) + timer);
             Console.WriteLine(Environment.NewLine);
 
