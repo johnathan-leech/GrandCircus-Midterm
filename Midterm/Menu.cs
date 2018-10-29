@@ -31,7 +31,6 @@ namespace Midterm
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();//List with KeyValuePairs for menu: string = display; Action = method call; to add: just menu.Add with no additional code changes
                 menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
                 menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instructions()));
-                //menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
                 menu.Add(new KeyValuePair<string, Action>("Scores", () => UserInput.RecentScoreReader()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Blank()));
 
@@ -120,8 +119,8 @@ namespace Midterm
             string title = "TO PLAY:\n";
             string line1 = "1. Select difficulty level\n";
             string line2 = "2. Enter coordinates of tile\n";
-            string line3 = "3. Press enter to select";
-            string line4 = "   Press f key to flag  ";
+            string line3 = "3. Press c to select";
+            string line4 = "   Press f to flag  ";
             string line5 = "   Press q for uncertain\n";
             string line6 = "4. Continue until all squares are selected.";
             string end = "Press any key to continue...";
@@ -142,16 +141,11 @@ namespace Midterm
         {
             Header();
             int width = Console.WindowWidth;
-            //string end = "Press any key to continue...";
 
-            //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
             Console.WriteLine($"\n{new string(' ', (width - 7) / 2)}CREDITS\n\n{new string(' ', (width - 15) / 2)}" +
                 $"DEV TEAM: BOOM!\n\n{new string(' ', (width - 15) / 2)}NICHOLAS LANDAU\n{new string(' ', (width - 15) / 2)}" +
                 $"JOHNATHAN LEECH\n{new string(' ', (width - 13) / 2)}KATIE HARRELL\n{new string(' ', (width - 9) / 2)}TY CARRON\n\n");
             Console.WriteLine(Environment.NewLine);
-            //Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
-            //Console.ReadKey();
-
         }
 
         public static void CustomXY()//sets custom board settings
@@ -195,9 +189,9 @@ namespace Midterm
                     else
                     {
                         i = -1;//if either number is invalid, reset
-                        if (input[0] == 2) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
-                        else if (input[0] == 3) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
-                        else if (input[0] == 4) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
+                        if (input[0] == 2) { Console.Write($" INVALID!\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
+                        else if (input[0] == 3) { Console.Write($" INVALID!\n{new string(' ', (width - 25) / 2)}Enter Columns (10 - {maxRow}):  "); }
+                        else if (input[0] == 4) { Console.Write($" INVALID!\n{new string(' ', (width - 25) / 2)}Enter Mines (10 - {maxRow}):  "); }
                         else { Console.WriteLine("ERROR - WTF did you do?"); }
                         continue;
                     }
@@ -235,6 +229,10 @@ namespace Midterm
                             single = num;
                         }
                     }
+                    else
+                    {
+                        Console.Write(" INVALID!");
+                    }
                     input[1] = tens + single;//combines input value
                 }
 
@@ -249,6 +247,10 @@ namespace Midterm
                             set = false;
                         }
                     }
+                    else
+                    {
+                        Console.Write(" INVALID!");
+                    }
                 }
                 else if (input[0] == 3)//validate double digit value columns
                 {
@@ -257,6 +259,10 @@ namespace Midterm
                         input[input[0]] = input[1];//save value to array
                         input[0] += 1;//set next index
                     }
+                    else
+                    {
+                        Console.Write(" INVALID!");
+                    }
                 }
                 else if (input[0] == 2)//validate double digit value rows
                 {
@@ -264,6 +270,10 @@ namespace Midterm
                     {
                         input[input[0]] = input[1];//save value to array
                         input[0] += 1;//set next index
+                    }
+                    else
+                    {
+                        Console.Write(" INVALID!");
                     }
                 }
             }

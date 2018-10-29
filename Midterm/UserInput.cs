@@ -9,7 +9,7 @@ namespace Midterm
     {
         public static void Playstate(Board game)
         {
-            
+
             Menu.Header();
             Tuple<int, int> inputCord;
             while (!game.WinsOrLoses())
@@ -17,17 +17,16 @@ namespace Midterm
                 game.DisplayBoard();
                 try
                 {
-
-                    inputCord = TakeCoordinates();
-                    System.Console.WriteLine("(ENTER)Click/(F)lag/(Q)mark");
+                    inputCord = TakeCoordinates(game.Rows, game.Columns);
+                    System.Console.WriteLine("(C)lick - (F)lag - (Q)mark");
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.F:
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.F);
                             break;
-                        case ConsoleKey.Enter:
-                            
+                        case ConsoleKey.C:
+
                             Menu.Header();
                             if (!game.RevealTile(inputCord.Item1, inputCord.Item2))
                             {
@@ -35,7 +34,7 @@ namespace Midterm
                             }
                             break;
                         case ConsoleKey.Q:
-                            
+
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.Q);
                             break;
@@ -55,32 +54,44 @@ namespace Midterm
         }
 
         // needs to take user input for row, column selection
-        public static Tuple<int, int> TakeCoordinates()
+        public static Tuple<int, int> TakeCoordinates(int maxRow, int maxCol)
         {
             var indexInput = Tuple.Create(0, 0);
-            for (int i = 0; i == 0;)
+
+            Console.WriteLine();
+            Console.Write("Please enter a number for the row({0}-{1})", 1, maxRow);
+            Console.WriteLine();
+
+            int inputRow;
+            while (true)
             {
-
-                try
+                if (int.TryParse(Console.ReadLine(), out inputRow))
                 {
-                    Console.WriteLine();
-                    Console.Write("Please enter a number for the row ");
-                    Console.WriteLine();
-                    int inputRow = int.Parse(Console.ReadLine());
-                    Console.Write("Please enter a number for the column");
-                    Console.WriteLine();
-                    int inputColumn = int.Parse(Console.ReadLine());
-                    indexInput = Tuple.Create(inputRow - 1, inputColumn - 1);
-
-                    i++;
+                    if (inputRow > 0 && inputRow <= maxRow)
+                        break;
+                    Console.WriteLine("That is not within the range");
                 }
-                catch
+                else
                 {
-                    Console.WriteLine("Please enter a valid number");
+                    Console.WriteLine("That is not a number");
                 }
             }
-            return indexInput;
+            Console.Write("Please enter a number for the column({0}-{1})", 1, maxCol);
+            Console.WriteLine();
+            int inputColumn;
+            while (true)
+            {
+                if (int.TryParse(Console.ReadLine(), out inputColumn))
+                {
+                    if (inputRow > 0 && inputRow <= maxCol)
+                        break;
+                    Console.WriteLine("That is not within the range");
+                }
+                Console.WriteLine("That is not a number");
+            }
+            indexInput = Tuple.Create(inputRow - 1, inputColumn - 1);
 
+            return indexInput;
         }
 
         public static void RecentScores(string score, string mode)
@@ -91,7 +102,9 @@ namespace Midterm
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
             scoreWriter.WriteLine(score+ " "+name+" "+mode);
             scoreWriter.Close();
+            Board.stopwatch.Reset();
         }
+
         public static void RecentScoreReader()
         {
             

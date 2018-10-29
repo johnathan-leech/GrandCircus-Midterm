@@ -17,6 +17,20 @@ namespace Midterm
         public static int winCounter = 0;
         public static int loseCounter = 0;
         public static Stopwatch stopwatch = new Stopwatch();
+        public int Rows
+        {
+            get
+            {
+                return rows;
+            }
+        }
+        public int Columns
+        {
+            get
+            {
+                return columns;
+            }
+        }
 
         public Board()
         {
@@ -249,10 +263,12 @@ namespace Midterm
             if (isMine == true)
             {
                 Console.WriteLine("BOOOOOOOOM!");
-                Console.WriteLine("Oh no, you hit a bomb!");
+                Console.WriteLine("Oh no, you hit a bomb!\n");
                 DisplayHiddenBoard();  // <-- display hidden board
+                Console.WriteLine("Try Again! :)");
                 Console.ReadLine();
                 loseCounter++;
+                stopwatch.Reset();
                 return true;
             }
 
@@ -370,7 +386,6 @@ namespace Midterm
             Console.WriteLine("\n\n");
             //DisplayBoard();
             stopwatch.Stop();
-            stopwatch.Reset();
         }
     }
 }
