@@ -87,7 +87,7 @@ namespace Midterm
             string name = Console.ReadLine();
             FileInfo highScore = new FileInfo(@".\HighScores.txt");
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(name + " " + "put highscore here");
+            scoreWriter.WriteLine(name + ": " + "put highscore here");
             scoreWriter.Close();
         }
         public static void RecentScoreReader()
