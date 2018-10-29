@@ -16,7 +16,6 @@ namespace Midterm
             Console.WriteLine(new string(' ', (width - count.Length) / 2) + count);
             Console.WriteLine(new string(' ', (width - timer.Length) / 2) + timer);
             Console.WriteLine(Environment.NewLine);
-
         }
 
         public static void StartMenu()
