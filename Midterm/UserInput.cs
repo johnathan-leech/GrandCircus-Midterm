@@ -116,13 +116,8 @@ namespace Midterm
                 sw.Close();
             }
             StreamReader scoreReader = new StreamReader(@"HighScores.txt");
-<<<<<<< HEAD
 
-            for (int i = 0; i < 10; i++)
-=======
-            
-            while(true)
->>>>>>> Displays top ten scores only
+            while (true)
             {
                 string print = scoreReader.ReadLine();
                 if (print == null)
@@ -136,11 +131,8 @@ namespace Midterm
 
             }
             scoreList.Sort();
-<<<<<<< HEAD
-            for (int i = 0; i < scoreList.Count; i++)
-=======
-            for(int i = 0; i < 10 && i < scoreList.Count; i++)
->>>>>>> Displays top ten scores only
+
+            for (int i = 0; i < 10 && i < scoreList.Count; i++)
             {
 
                 string[] sortedScoreList = scoreList[i].Split('\u1234');
