@@ -319,24 +319,45 @@ namespace Midterm
             Console.WriteLine();
             for (int i = 0; i < rows; i++)
             {
-
                 Console.Write("{0, -4}", xAxisCounter + 1);
                 for (int j = 0; j < columns; j++)
                 {
-                    switch (hiddenBoard[i, j])
-                    {
-                        case 0:
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            temp = '-';
-                            break;
-                        case 9:
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            temp = '*';
-                            break;
-                        default:
-                            temp = (char)('0' + hiddenBoard[i, j]);
-                            break;
 
+                    switch(displayBoard[i,j])
+                    {
+                        case State.clicked:
+                            temp = (char)(hiddenBoard[i, j] + '0');
+                            setColor(hiddenBoard[i, j]);
+                            if (temp == '9')
+                            {
+                                Console.BackgroundColor = ConsoleColor.Magenta;
+                                temp = '*'; //'*'
+                            }
+                            if (temp == '0')
+                            {
+                                temp = '-';
+                            }
+                            break;
+                        case State.flag:
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            temp = 'F'; //''
+                            if(hiddenBoard[i,j] != 9)
+                            {
+                                Console.BackgroundColor = ConsoleColor.Cyan;
+                            }
+                            break;
+                        case State.hidden:
+                            //Console.ForegroundColor = ConsoleColor.Cyan;
+                            temp = '#'; //''
+                            if(hiddenBoard[i,j] == 9)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                temp = '*';
+                            }
+                            break;
+                        case State.qmark:
+                            temp = '?';
+                            break;
                     }
                     Console.Write(temp + "  ");
                     Console.ResetColor();
@@ -345,7 +366,7 @@ namespace Midterm
                 Console.WriteLine();
             }
             Console.WriteLine("\n\n");
-            DisplayBoard();
+            //DisplayBoard();
             stopwatch.Stop();
             stopwatch.Reset();
         }
