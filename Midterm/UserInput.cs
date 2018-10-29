@@ -97,8 +97,9 @@ namespace Midterm
             Console.WriteLine();
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
+
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(score + " " + name + " " + mode);
+            scoreWriter.WriteLine(score + "\u1234" + name + "\u1234" + mode);
             scoreWriter.Close();
             Board.stopwatch.Reset();
         }
@@ -108,7 +109,13 @@ namespace Midterm
 
             Menu.Header();
             List<string> scoreList = new List<string>();
-            StreamReader scoreReader = new StreamReader(@".\HighScores.txt");
+
+            if (!File.Exists("HighScores.txt"))
+            {
+                StreamWriter sw = new StreamWriter("HighScores.txt");
+                sw.Close();
+            }
+            StreamReader scoreReader = new StreamReader(@"HighScores.txt");
 
             for (int i = 0; i < 10; i++)
             {
@@ -126,7 +133,8 @@ namespace Midterm
             scoreList.Sort();
             for (int i = 0; i < scoreList.Count; i++)
             {
-                string[] sortedScoreList = scoreList[i].Split(' ');
+
+                string[] sortedScoreList = scoreList[i].Split('\u1234');
                 Console.WriteLine("{0}'s Score: {1} Board Size {2}", sortedScoreList[1], sortedScoreList[0], sortedScoreList[2]);
             }
 
