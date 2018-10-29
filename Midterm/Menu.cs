@@ -189,9 +189,9 @@ namespace Midterm
                     else
                     {
                         i = -1;//if either number is invalid, reset
-                        if (input[0] == 2) { Console.Write($"\n{new string(' ', (width - 25) / 2)}INVALID! Enter Rows (10 - {maxRow}):  "); }
-                        else if (input[0] == 3) { Console.Write($"\n{new string(' ', (width - 25) / 2)}INVALID! Enter Columns (10 - {maxRow}):  "); }
-                        else if (input[0] == 4) { Console.Write($"\n{new string(' ', (width - 25) / 2)}INVALID! Enter Mines (10 - {maxRow}):  "); }
+                        if (input[0] == 2) { Console.Write($"  INVALID!\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
+                        else if (input[0] == 3) { Console.Write($"  INVALID!\n{new string(' ', (width - 25) / 2)}Enter Columns (10 - {maxRow}):  "); }
+                        else if (input[0] == 4) { Console.Write($"  INVALID!\n{new string(' ', (width - 25) / 2)}Enter Mines (10 - {maxRow}):  "); }
                         else { Console.WriteLine("ERROR - WTF did you do?"); }
                         continue;
                     }
@@ -205,6 +205,7 @@ namespace Midterm
                         else if (i == 1 && num >= 0 && num <= 9)//if single digit
                         {
                             single = num;
+                            Console.Write("  INVALID!");
                         }
                     }
                     else if (input[0] == 3)//validate input for columns
@@ -216,6 +217,7 @@ namespace Midterm
                         else if (i == 1 && num >= 0 && num <= 9)//if single digit
                         {
                             single = num;
+                            Console.Write("  INVALID!");
                         }
                     }
                     else if (input[0] == 4)//validate mines
@@ -227,6 +229,7 @@ namespace Midterm
                         else if (i == 1 && num >= 0 && num <= 9)//if single digit
                         {
                             single = num;
+                            Console.Write("  INVALID!");
                         }
                     }
                     input[1] = tens + single;//combines input value
@@ -259,6 +262,10 @@ namespace Midterm
                         input[input[0]] = input[1];//save value to array
                         input[0] += 1;//set next index
                     }
+                }
+                else
+                {
+                    Console.Write("INVALID!");
                 }
             }
             Board.BoardDimensions(input[2], input[3], input[4]);
