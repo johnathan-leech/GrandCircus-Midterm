@@ -7,7 +7,7 @@ namespace Midterm
     {
         public static void Playstate(Board game)
         {
-            
+
             Menu.Header();
             Tuple<int, int> inputCord;
             while (!game.WinsOrLoses())
@@ -17,15 +17,15 @@ namespace Midterm
                 {
 
                     inputCord = TakeCoordinates();
-                    System.Console.WriteLine("(ENTER)Click/(F)lag/(Q)mark");
+                    System.Console.WriteLine("(C)lick - (F)lag - (Q)mark");
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.F:
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.F);
                             break;
-                        case ConsoleKey.Enter:
-                            
+                        case ConsoleKey.C:
+
                             Menu.Header();
                             if (!game.RevealTile(inputCord.Item1, inputCord.Item2))
                             {
@@ -33,7 +33,7 @@ namespace Midterm
                             }
                             break;
                         case ConsoleKey.Q:
-                            
+
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.Q);
                             break;
@@ -62,12 +62,12 @@ namespace Midterm
                 try
                 {
                     Console.WriteLine();
-                    Console.Write("Please enter a number for the row ");
-                    Console.WriteLine();
+                    Console.Write("Please enter a number for the row: ");
                     int inputRow = int.Parse(Console.ReadLine());
-                    Console.Write("Please enter a number for the column");
                     Console.WriteLine();
+                    Console.Write("Please enter a number for the column: ");
                     int inputColumn = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
                     indexInput = Tuple.Create(inputRow - 1, inputColumn - 1);
 
                     i++;
@@ -87,7 +87,7 @@ namespace Midterm
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(name + " Time: "+score+" Board Size: "+mode);
+            scoreWriter.WriteLine(name + " Time: " + score + " Board Size: " + mode);
             scoreWriter.Close();
         }
         public static void RecentScoreReader()
