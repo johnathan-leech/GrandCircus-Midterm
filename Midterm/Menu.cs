@@ -162,7 +162,6 @@ namespace Midterm
         {
             Header();
             int width = Console.WindowWidth;
-            string invalid = "INVALID";
             //default values
             int[] input = new int[5] { 2, 0, 0, 0, 0 };//0=set, 1=input, 2=rows, 3=columns, 4=mines
             bool set = true;
