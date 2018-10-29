@@ -7,9 +7,20 @@ namespace Midterm
         public static void Header()//Header clears each page and displays title
         {
             Console.Clear();
-            Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!");
-            Console.WriteLine($"{new string(' ', 32)}Games Completed: {Board.counter}");
-            Console.WriteLine($"{new string(' ', 36)}" + Board.stopwatch.Elapsed.ToString(@"mm\:ss\.ff") + "\n");
+            int width = Console.WindowWidth;
+            string head = "Welcome to MINEFIELD!";
+            string count = "Games Completed: ";
+            string timer = Board.stopwatch.Elapsed.ToString(@"mm\:ss\.ff");
+
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine(new string(' ', (width - head.Length) / 2) + head);
+            Console.WriteLine(new string(' ', (width - count.Length) / 2) + count + Board.counter);
+            Console.WriteLine(new string(' ', (width - timer.Length) / 2) + timer);
+            Console.WriteLine(Environment.NewLine);
+
+            //Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!");
+            //Console.WriteLine($"{new string(' ', 32)}Games Completed: {Board.counter}");
+            //Console.WriteLine($"{new string(' ', 36)}" + Board.stopwatch.Elapsed.ToString(@"mm\:ss\.ff") + "\n");
 
         }
 
@@ -19,6 +30,8 @@ namespace Midterm
             while (retry)
             {
                 Header();
+                int width = Console.WindowWidth;
+                string select = "What would you like to do? (enter number)  ";
 
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();//List with KeyValuePairs for menu: string = display; Action = method call; to add: just menu.Add with no additional code changes
                 menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
@@ -30,10 +43,10 @@ namespace Midterm
                 foreach (KeyValuePair<string, Action> item in menu)
                 {
                     menuCount += 1;//counter to display selection options
-                    Console.WriteLine(new string(' ', 33) + menuCount + " - " + item.Key);
+                    Console.WriteLine(new string(' ',(width - 12) / 2) + menuCount + " - " + item.Key);
                 }
 
-                Console.Write($"\n{new string(' ', 22)}What would you like to do? (enter number)  ");
+                Console.Write($"\n{new string(' ', (width - select.Length) / 2)}" + select);
                 int entry = 0;
                 if (menuCount < 10)//set condition to equal 1 key press
                 {
@@ -62,6 +75,9 @@ namespace Midterm
             while (retry)
             {
                 Header();
+                int width = Console.WindowWidth;
+                string select = "What would you like to do? (enter number)  ";
+
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
                 menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(15)));
                 menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
@@ -73,10 +89,10 @@ namespace Midterm
                 foreach (KeyValuePair<string, Action> item in menu)
                 {
                     menuCount += 1;
-                    Console.WriteLine(new string(' ', 33) + menuCount + " - " + item.Key);
+                    Console.WriteLine(new string(' ', (width - 12) / 2) + menuCount + " - " + item.Key);
                 }
 
-                Console.Write($"\n{new string(' ', 22)}What would you like to do? (enter number)  ");
+                Console.Write($"\n{new string(' ', (width - select.Length) / 2)}" + select);
                 int entry = 0;
                 if (menuCount < 10)
                 {
@@ -104,35 +120,48 @@ namespace Midterm
         public static void Instructions()
         {
             Header();
-            Console.WriteLine($"\n{new string(' ', 36)}TO PLAY:\n\n{new string(' ', 26)}" +
-                            $"1. Select difficulty level.\n{new string(' ', 31)}" +
-                            $"*FOR CUSTOM BOARD*\n{new string(' ', 20)}Enter board dimension(s) " +
-                            $"& total mines,\n{new string(' ', 31)}or select default.\n\n" +
-                            $"{new string(' ', 22)}2. Select whether you would like to:\n" +
-                            $"{new string(' ', 32)}Step on square - \n{new string(' ', 20)}" +
-                            $"This could result in detonating a mine!\n{new string(' ', 30)}Flag a square (f) - \n" +
-                            $"{new string(' ', 18)}Mark squares you're certain contain a mine." +
-                            $"\n{new string(' ', 28)}Question a square (?) - \n{new string(' ', 19)}" +
-                            $"If you're not 100% certain there is a mine.\n\n{new string(' ', 12)}" +
-                            $"3. Enter coordinates of the square you'd like to select.\n\n{new string(' ', 8)}" +
-                            $"4. Continue until all squares are either stepped on or flagged.");
+            int width = Console.WindowWidth;
+            string title = "TO PLAY:\n";
+            string line1 = "1. Select difficulty level";
+            string line2 = "2. Enter coordinates of tile";
+            string line3 = "3. Press enter to select";
+            string line4 = "    Press f key to flag  ";
+            string line5 = "    Press ? for uncertain";
+            string line6 = "4. Continue until all squares are selected.";
+            string end = "Press any key to continue...";
 
-            Console.Write($"\n{new string(' ', 25)}Press any key to continue...  ");
+            Console.WriteLine(new string(' ', (width - title.Length) / 2) + title);
+            Console.WriteLine(new string(' ', (width - line1.Length) / 2) + line1);
+            Console.WriteLine(new string(' ', (width - line2.Length) / 2) + line2);
+            Console.WriteLine(new string(' ', (width - line3.Length) / 2) + line3);
+            Console.WriteLine(new string(' ', (width - line4.Length) / 2) + line4);
+            Console.WriteLine(new string(' ', (width - line5.Length) / 2) + line5);
+            Console.WriteLine(new string(' ', (width - line6.Length) / 2) + line6);
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
             Console.ReadKey();
         }
 
         public static void CreditsStatic()
         {
             Header();
+            int width = Console.WindowWidth;
+            string end = "Press any key to continue...";
+
             //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
-            Console.WriteLine($"\n{new string(' ', 36)}CREDITS\n\n{new string(' ', 31)}DEVELOPMENT TEAM: BOOM!\n\n{new string(' ', 28)}LEADER: NICHOLAS LANDAU\n{new string(' ', 32)}JOHNATHAN LEECH\n{new string(' ', 33)}KATIE HARRELL\n{new string(' ', 35)}TY CARRON\n\n");///////////////////////Write Credits///////NEED TEAM NAME!
-            Console.Write($"\n{new string(' ', 25)}Press any key to continue...  ");
+            Console.WriteLine($"\n{new string(' ', (width - 7) / 2)}CREDITS\n\n{new string(' ', (width - 15) / 2)}" +
+                $"DEV TEAM: BOOM!\n\n{new string(' ', (width - 15) / 2)}NICHOLAS LANDAU\n{new string(' ', (width - 15) / 2)}" +
+                $"JOHNATHAN LEECH\n{new string(' ', (width - 13) / 2)}KATIE HARRELL\n{new string(' ', (width - 9) / 2)}TY CARRON\n\n");
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
             Console.ReadKey();
         }
 
         public static void CustomXY()//sets custom board settings
         {
             Header();
+            int width = Console.WindowWidth;
+            string invalid = "INVALID";
             //default values
             int[] input = new int[5] { 2, 0, 0, 0, 0 };//0=set, 1=input, 2=rows, 3=columns, 4=mines
             bool set = true;
@@ -147,13 +176,13 @@ namespace Midterm
                 switch (input[0])//display which value will be set
                 {
                     case 2:
-                        Console.Write($"\nEnter Rows (10 - {maxRow}):  ");
+                        Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  ");
                         break;
                     case 3:
-                        Console.Write($"\nEnter Columns (10 - {maxCol}):  ");
+                        Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Columns (10 - {maxCol}):  ");
                         break;
                     case 4:
-                        Console.Write("\nMines (10-50%):  ");
+                        Console.Write($"\n{new string(' ', (width - 25) / 2)}Mines (10-50%):  ");
                         break;
                 }
 
@@ -170,9 +199,10 @@ namespace Midterm
                     else
                     {
                         i = -1;//if either number is invalid, reset
-                        if (input[0] == 2) { Console.Write($"\nInvalid, enter a number between 10-{maxRow}:  "); }
-                        else if (input[0] == 3) { Console.Write($"\nInvalid, enter a number between 10-{maxCol}:  "); }
-                        else if (input[0] == 4) { Console.Write("\nInvalid, enter a number between 10-50:  "); }
+                        Console.Write($"\n{new string(' ', (width - invalid.Length) / 2)}" + invalid);
+                        if (input[0] == 2) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
+                        else if (input[0] == 3) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
+                        else if (input[0] == 4) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
                         else { Console.WriteLine("ERROR - WTF did you do?"); }
                         continue;
                     }
@@ -242,7 +272,7 @@ namespace Midterm
                 }
                 else
                 {
-                    Console.WriteLine("Invalid, Try Again...");
+                    Console.Write($"\n{new string(' ', (width - invalid.Length) / 2)}" + invalid);
                 }
             }
             Board.BoardDimensions(input[2], input[3], input[4]);
@@ -278,7 +308,9 @@ namespace Midterm
 
         public static void Exit()
         {
-            Console.Write($"\n{new string(' ', 24)}Goodbye! Press ESCAPE to Exit...");
+            int width = Console.WindowWidth;
+            string exit = "Goodbye! Press ESCAPE to Exit...";
+            Console.Write($"\n{new string(' ', (width - exit.Length) / 2)}" + exit);
             while (Console.ReadKey().Key != ConsoleKey.Escape)
             {
                 continue;
