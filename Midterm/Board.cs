@@ -37,15 +37,16 @@ namespace Midterm
             InitializeBoard();
         }
 
-        //////////////////////////////////sending dimensions from UserInput class
+        //////////////////////////////////sending dimensions from Menu class
         public static void BoardDimensions(int xy)
         {
             int row = xy;
             int column = xy;
             double minesPercent = .15;
             Board gameBoard = new Board(row, column, minesPercent);
+
             Console.Clear();
-            gameBoard.DisplayBoard();
+            UserInput.Playstate(gameBoard);
         }
 
         public static void BoardDimensions(int x, int y, int mines)
@@ -55,7 +56,9 @@ namespace Midterm
             int minesTotal = mines;
             double minesPercent = mines / 100;
             Board gameBoard = new Board(row, column, minesPercent);
-            gameBoard.DisplayBoard();
+
+            Console.Clear();
+            UserInput.Playstate(gameBoard);
         }///////////////////////////////////////////////////////////////////////////
 
         private void InitializeBoard()
