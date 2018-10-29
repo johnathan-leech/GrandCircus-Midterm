@@ -119,8 +119,8 @@ namespace Midterm
             string title = "TO PLAY:\n";
             string line1 = "1. Select difficulty level\n";
             string line2 = "2. Enter coordinates of tile\n";
-            string line3 = "3. Press enter to select";
-            string line4 = "   Press f key to flag  ";
+            string line3 = "3. Press c to select";
+            string line4 = "   Press f to flag  ";
             string line5 = "   Press q for uncertain\n";
             string line6 = "4. Continue until all squares are selected.";
             string end = "Press any key to continue...";
@@ -146,6 +146,9 @@ namespace Midterm
                 $"DEV TEAM: BOOM!\n\n{new string(' ', (width - 15) / 2)}NICHOLAS LANDAU\n{new string(' ', (width - 15) / 2)}" +
                 $"JOHNATHAN LEECH\n{new string(' ', (width - 13) / 2)}KATIE HARRELL\n{new string(' ', (width - 9) / 2)}TY CARRON\n\n");
             Console.WriteLine(Environment.NewLine);
+            //Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
+            //Console.ReadKey();
+
         }
         public static void CustomXY()//sets custom board settings
         {
