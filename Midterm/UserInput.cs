@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+
 namespace Midterm
 {
     class UserInput
@@ -62,7 +64,7 @@ namespace Midterm
                     Console.Write("Please enter a number for the column");
                     Console.WriteLine();
                     int inputColumn = int.Parse(Console.ReadLine());
-                    indexInput = Tuple.Create(inputRow -1, inputColumn -1);
+                    indexInput = Tuple.Create(inputRow - 1, inputColumn - 1);
 
                     i++;
                 }
@@ -73,6 +75,30 @@ namespace Midterm
             }
             return indexInput;
         }
-        // need to add 'make a loop of play' in order to get continuous display and input
+
+        public static void RecentScores(/*Put recent here*/)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Please enter your name to be entered on the scoreboard");
+            string name = Console.ReadLine();
+            FileInfo highScore = new FileInfo(@".\HighScores.txt");
+            StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
+            scoreWriter.WriteLine(name + " " + "put highscore here");
+            scoreWriter.Close();
+        }
+        public static void RecentScoreReader()
+        {
+            StreamReader scoreReader = new StreamReader(@".\HighScores.txt");
+            for (int i = 0; i <= 10;)
+            {
+                string print = scoreReader.ReadLine();
+                if (print == null)
+                {
+                    break;
+                }
+                Console.WriteLine(print);
+
+            }
+        }
     }
 }
