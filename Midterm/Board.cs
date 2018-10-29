@@ -86,12 +86,12 @@ namespace Midterm
 
             for (; yAxisCounter < columns; yAxisCounter++)
             {
-                Console.Write("{0, -3}", yAxisCounter);
+                Console.Write("{0, -3}", yAxisCounter + 1);
             }
             Console.WriteLine();
             for (int i = 0; i < rows; i++)
             {
-                Console.Write("{0, -4}", xAxisCounter);
+                Console.Write("{0, -4}", xAxisCounter + 1);
                 for (int j = 0; j < columns; j++)
                 {
                     yAxisCounter++;
