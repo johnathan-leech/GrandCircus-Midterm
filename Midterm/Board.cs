@@ -14,7 +14,8 @@ namespace Midterm
         private double minesPercent;
         private int[,] hiddenBoard;
         private State[,] displayBoard;
-        public static int counter = 0;
+        public static int winCounter = 0;
+        public static int loseCounter = 0;
         public static Stopwatch stopwatch = new Stopwatch();
 
         public Board()
@@ -251,7 +252,7 @@ namespace Midterm
                 Console.WriteLine("Oh no, you hit a bomb!");
                 DisplayHiddenBoard();  // <-- display hidden board
                 Console.ReadLine();
-
+                loseCounter++;
                 return true;
             }
 
@@ -268,9 +269,9 @@ namespace Midterm
             if (displayBoard.Length - (numMines) == numberClicked)
             {
                 DisplayHiddenBoard();  // <-- display hidden board
-
                 UserInput.RecentScores(stopwatch.Elapsed.ToString(@"mm\:ss\.ff"));
                 UserInput.RecentScoreReader();
+                winCounter++;
                 return true;
             }
             return false;

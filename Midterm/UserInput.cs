@@ -49,7 +49,7 @@ namespace Midterm
                 }
                 Board.stopwatch.Start();
             }
-            Board.counter++;
+            //Board.counter++;
         }
 
         // needs to take user input for row, column selection

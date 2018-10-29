@@ -9,19 +9,14 @@ namespace Midterm
             Console.Clear();
             int width = Console.WindowWidth;
             string head = "Welcome to MINEFIELD!";
-            string count = "Games Completed: ";
+            string count = $"Games Won: {Board.winCounter}  -  Games Lost: {Board.loseCounter}";
             string timer = Board.stopwatch.Elapsed.ToString(@"mm\:ss\.ff");
 
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine(new string(' ', (width - head.Length) / 2) + head);
-            Console.WriteLine(new string(' ', (width - count.Length) / 2) + count + Board.counter);
+            Console.WriteLine(new string(' ', (width - count.Length) / 2) + count);
             Console.WriteLine(new string(' ', (width - timer.Length) / 2) + timer);
             Console.WriteLine(Environment.NewLine);
-
-            //Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!");
-            //Console.WriteLine($"{new string(' ', 32)}Games Completed: {Board.counter}");
-            //Console.WriteLine($"{new string(' ', 36)}" + Board.stopwatch.Elapsed.ToString(@"mm\:ss\.ff") + "\n");
-
         }
 
         public static void StartMenu()
@@ -36,7 +31,7 @@ namespace Midterm
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();//List with KeyValuePairs for menu: string = display; Action = method call; to add: just menu.Add with no additional code changes
                 menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
                 menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instructions()));
-                menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
+                //menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
                 menu.Add(new KeyValuePair<string, Action>("Scores", () => UserInput.RecentScoreReader()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Blank()));
 
@@ -44,7 +39,7 @@ namespace Midterm
                 foreach (KeyValuePair<string, Action> item in menu)
                 {
                     menuCount += 1;//counter to display selection options
-                    Console.WriteLine(new string(' ',(width - 12) / 2) + menuCount + " - " + item.Key);
+                    Console.WriteLine(new string(' ', (width - 12) / 2) + menuCount + " - " + item.Key);
                 }
 
                 Console.Write($"\n{new string(' ', (width - select.Length) / 2)}" + select);
@@ -123,11 +118,11 @@ namespace Midterm
             Header();
             int width = Console.WindowWidth;
             string title = "TO PLAY:\n";
-            string line1 = "1. Select difficulty level";
-            string line2 = "2. Enter coordinates of tile";
+            string line1 = "1. Select difficulty level\n";
+            string line2 = "2. Enter coordinates of tile\n";
             string line3 = "3. Press enter to select";
-            string line4 = "    Press f key to flag  ";
-            string line5 = "    Press ? for uncertain";
+            string line4 = "   Press f key to flag  ";
+            string line5 = "   Press q for uncertain\n";
             string line6 = "4. Continue until all squares are selected.";
             string end = "Press any key to continue...";
 
@@ -147,15 +142,15 @@ namespace Midterm
         {
             Header();
             int width = Console.WindowWidth;
-            string end = "Press any key to continue...";
+            //string end = "Press any key to continue...";
 
             //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
             Console.WriteLine($"\n{new string(' ', (width - 7) / 2)}CREDITS\n\n{new string(' ', (width - 15) / 2)}" +
                 $"DEV TEAM: BOOM!\n\n{new string(' ', (width - 15) / 2)}NICHOLAS LANDAU\n{new string(' ', (width - 15) / 2)}" +
                 $"JOHNATHAN LEECH\n{new string(' ', (width - 13) / 2)}KATIE HARRELL\n{new string(' ', (width - 9) / 2)}TY CARRON\n\n");
             Console.WriteLine(Environment.NewLine);
-            Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
-            Console.ReadKey();
+            //Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
+            //Console.ReadKey();
         }
 
         public static void CustomXY()//sets custom board settings
@@ -309,6 +304,7 @@ namespace Midterm
 
         public static void Exit()
         {
+            CreditsStatic();
             int width = Console.WindowWidth;
             string exit = "Goodbye! Press ESCAPE to Exit...";
             Console.Write($"\n{new string(' ', (width - exit.Length) / 2)}" + exit);
@@ -331,6 +327,5 @@ namespace Midterm
             else if (key == ConsoleKey.D9 || key == ConsoleKey.NumPad9) { return 9; }
             else { return 0; }
         }
-
     }
 }
