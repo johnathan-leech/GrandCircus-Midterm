@@ -7,7 +7,7 @@ namespace Midterm
     {
         public static void Playstate(Board game)
         {
-            Board.stopwatch.Reset();
+            
             Menu.Header();
             Tuple<int, int> inputCord;
             while (!game.WinsOrLoses())
@@ -49,7 +49,6 @@ namespace Midterm
                 }
                 Board.stopwatch.Start();
             }
-            Board.stopwatch.Stop();
             Board.counter++;
         }
 
@@ -79,6 +78,7 @@ namespace Midterm
                 }
             }
             return indexInput;
+
         }
 
         public static void RecentScores(string score)
