@@ -12,7 +12,7 @@ namespace Midterm
                 game.DisplayBoard();
                 try
                 {
-                    System.Console.WriteLine("(C)lick/(F)lag/(Q)mark");
+                    System.Console.WriteLine("(ENTER)Click/(F)lag/(Q)mark");
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.F:
@@ -20,7 +20,7 @@ namespace Midterm
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.F);
                             break;
-                        case ConsoleKey.C:
+                        case ConsoleKey.Enter:
                             inputCord = TakeCoordinates();
                             Menu.Header();
                             if (!game.RevealTile(inputCord.Item1, inputCord.Item2))
