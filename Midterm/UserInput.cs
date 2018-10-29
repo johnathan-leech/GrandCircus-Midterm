@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
+
 
 namespace Midterm
 {
@@ -15,8 +17,7 @@ namespace Midterm
                 game.DisplayBoard();
                 try
                 {
-                    
-                    inputCord = TakeCoordinates(game.Rows,game.Columns);
+                    inputCord = TakeCoordinates(game.Rows, game.Columns);
                     System.Console.WriteLine("(C)lick - (F)lag - (Q)mark");
                     switch (Console.ReadKey().Key)
                     {
@@ -60,7 +61,7 @@ namespace Midterm
             Console.WriteLine();
             Console.Write("Please enter a number for the row({0}-{1})", 1, maxRow);
             Console.WriteLine();
-        
+
             int inputRow;
             while (true)
             {
@@ -75,8 +76,7 @@ namespace Midterm
                     Console.WriteLine("That is not a number");
                 }
             }
-
-            Console.Write("Please enter a number for the column({0}-{1})",1,maxCol);
+            Console.Write("Please enter a number for the column({0}-{1})", 1, maxCol);
             Console.WriteLine();
             int inputColumn;
             while (true)
@@ -90,7 +90,7 @@ namespace Midterm
                 Console.WriteLine("That is not a number");
             }
             indexInput = Tuple.Create(inputRow - 1, inputColumn - 1);
-            
+
             return indexInput;
         }
 
@@ -100,21 +100,36 @@ namespace Midterm
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(name + " Time: " + score + " Board Size: " + mode);
+            scoreWriter.WriteLine(score+ " "+name+" "+mode);
             scoreWriter.Close();
+            Board.stopwatch.Reset();
         }
+
         public static void RecentScoreReader()
         {
+            
             Menu.Header();
+            List<string> scoreList = new List<string>();
             StreamReader scoreReader = new StreamReader(@".\HighScores.txt");
-            for (int i = 0; i <= 10;)
+            
+            for (int i = 0; i < 10; i++)
             {
                 string print = scoreReader.ReadLine();
                 if (print == null)
                 {
                     break;
                 }
-                Console.WriteLine(print);
+                
+                scoreList.Add(print);
+
+                
+                
+            }
+            scoreList.Sort();
+            for(int i = 0; i < scoreList.Count; i++)
+            {
+                    string[] sortedScoreList = scoreList[i].Split(' ');
+                    Console.WriteLine("{0}'s Score: {1} Board Size {2}", sortedScoreList[1], sortedScoreList[0], sortedScoreList[2]);
             }
 
             scoreReader.Close();
