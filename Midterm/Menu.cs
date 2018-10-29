@@ -17,12 +17,12 @@ namespace Midterm
             int origHeight = Console.WindowHeight;
             int maxWidth = Console.LargestWindowWidth;
             int maxHeight = Console.LargestWindowHeight;
-            int winWidth = (Console.WindowWidth / Console.WindowWidth) * 215;
-            int winHeight = (Console.WindowWidth / Console.WindowWidth) * 55;
+            //int winWidth = (Console.WindowWidth / Console.WindowWidth) * 215;////////to manually set
+            //int winHeight = (Console.WindowWidth / Console.WindowWidth) * 55;
             Console.SetWindowSize(maxWidth, maxHeight);
             Console.WriteLine($"original window width = {origWidth}\noriginal window height = {origHeight}");
             Console.WriteLine($"largest window width = {maxWidth}\nlargest window height = {maxHeight}");
-            Console.WriteLine($"current window width = {winWidth}\ncurrent window height = {winHeight}");
+            //Console.WriteLine($"current window width = {winWidth}\ncurrent window height = {winHeight}");
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
         }
 
