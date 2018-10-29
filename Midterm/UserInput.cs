@@ -5,7 +5,7 @@ namespace Midterm
 {
     class UserInput
     {
-        public static void Header() //Header clears each page and displays title
+        /*public static void Header() //Header clears each page and displays title
         {
             Console.Clear();
             Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!\n");
@@ -237,7 +237,7 @@ namespace Midterm
             }
         }
 
-        /*public static void CustomXY()
+        public static void CustomXY()
         {
             Header();
             Console.WriteLine($"{new string(' ', 30)}user input xy & mines");
@@ -251,7 +251,7 @@ namespace Midterm
             {
                 Exit();
             }
-        } */
+        } 
 
         public static int KeyToNum(ConsoleKey key)
         {
@@ -265,7 +265,7 @@ namespace Midterm
             else if (key == ConsoleKey.D8 || key == ConsoleKey.NumPad8) { return 8; }
             else if (key == ConsoleKey.D9 || key == ConsoleKey.NumPad9) { return 9; }
             else { return 0; }
-        }
+        } */
 
         public static void Playstate(Board game)
         {

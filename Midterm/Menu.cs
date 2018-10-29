@@ -22,7 +22,7 @@ namespace Midterm
                 menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
                 menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instruct()));
                 menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
-                menu.Add(new KeyValuePair<string, Action>("Exit", () => Exit()));
+                menu.Add(new KeyValuePair<string, Action>("Exit", () => Blank()));
 
                 int menuCount = 0;//globally declared to use in multiple nests, changes dynamically based on menu items
                 foreach (KeyValuePair<string, Action> item in menu)
@@ -46,7 +46,7 @@ namespace Midterm
                 if (entry > 0 && entry <= menu.Count)//checks for valid entry
                 {
                     menu[entry - 1].Value.Invoke();//invokes method
-                    if (entry == menu.Count)
+                    if (entry == menu.Count)//if last entry (Exit) was chosen, loop is set to false
                     {
                         retry = false;
                     }
@@ -67,8 +67,7 @@ namespace Midterm
                 menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
                 menu.Add(new KeyValuePair<string, Action>("Expert", () => Board.BoardDimensions(40)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
-                menu.Add(new KeyValuePair<string, Action>("Return to Start Menu", () => StartMenu()));
-                menu.Add(new KeyValuePair<string, Action>("Exit", () => Exit()));
+                menu.Add(new KeyValuePair<string, Action>("Return to Start Menu", () => Blank()));
 
                 int menuCount = 0;
                 foreach (KeyValuePair<string, Action> item in menu)
@@ -97,10 +96,27 @@ namespace Midterm
             }
         }
 
-        public static void Instruct()
+        public static void Blank()
+        {
+            //to remove possibly defined 'indirect recursion'
+        }
+
+        public static void Instructions()
         {
             Header();
-            Console.WriteLine($"\n{new string(' ', 36)}TO PLAY:\n\n{new string(' ', 26)}1. Select difficulty level.\n{new string(' ', 31)}*FOR CUSTOM BOARD*\n{new string(' ', 20)}Enter board dimension(s) & total mines,\n{new string(' ', 31)}or select default.\n\n{new string(' ', 22)}2. Select whether you would like to:\n{new string(' ', 32)}Step on square - \n{new string(' ', 20)}This could result in detonating a mine!\n{new string(' ', 30)}Flag a square (f) - \n{new string(' ', 18)}Mark squares you're certain contain a mine.\n{new string(' ', 28)}Question a square (?) - \n{new string(' ', 19)}If you're not 100% certain there is a mine.\n\n{new string(' ', 12)}3. Enter coordinates of the square you'd like to select.\n\n{new string(' ', 8)}4. Continue until all squares are either stepped on or flagged.");///////////////////////Write Instructions//note we need to set available flags to # of mines and display how many are unused.//possibly ask if square or rectangular board, then dimension input would equal x&y or x(or)y
+            Console.WriteLine($"\n{new string(' ', 36)}TO PLAY:\n\n{new string(' ', 26)}" +
+                            $"1. Select difficulty level.\n{new string(' ', 31)}" +
+                            $"*FOR CUSTOM BOARD*\n{new string(' ', 20)}Enter board dimension(s) " +
+                            $"& total mines,\n{new string(' ', 31)}or select default.\n\n" +
+                            $"{new string(' ', 22)}2. Select whether you would like to:\n" +
+                            $"{new string(' ', 32)}Step on square - \n{new string(' ', 20)}" +
+                            $"This could result in detonating a mine!\n{new string(' ', 30)}Flag a square (f) - \n" +
+                            $"{new string(' ', 18)}Mark squares you're certain contain a mine." +
+                            $"\n{new string(' ', 28)}Question a square (?) - \n{new string(' ', 19)}" +
+                            $"If you're not 100% certain there is a mine.\n\n{new string(' ', 12)}" +
+                            $"3. Enter coordinates of the square you'd like to select.\n\n{new string(' ', 8)}" +
+                            $"4. Continue until all squares are either stepped on or flagged.");
+
             Console.Write($"\n{new string(' ', 25)}Press any key to continue...  ");
             Console.ReadKey();
         }
@@ -109,7 +125,7 @@ namespace Midterm
         {
             Header();
             //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
-            Console.WriteLine($"\n{new string(' ', 36)}CREDITS\n\n{new string(' ', 31)}DEVELOPMENT TEAM: \n\n{new string(' ', 28)}LEADER: NICHOLAS LANDAU\n{new string(' ', 32)}JONATHAN  LEECH\n{new string(' ', 33)}KATIE HARRELL\n{new string(' ', 35)}TY CARRON\n\n");///////////////////////Write Credits///////NEED TEAM NAME!
+            Console.WriteLine($"\n{new string(' ', 36)}CREDITS\n\n{new string(' ', 31)}DEVELOPMENT TEAM: BOOM!\n\n{new string(' ', 28)}LEADER: NICHOLAS LANDAU\n{new string(' ', 32)}JOHNATHAN LEECH\n{new string(' ', 33)}KATIE HARRELL\n{new string(' ', 35)}TY CARRON\n\n");///////////////////////Write Credits///////NEED TEAM NAME!
             Console.Write($"\n{new string(' ', 25)}Press any key to continue...  ");
             Console.ReadKey();
         }
@@ -156,7 +172,7 @@ namespace Midterm
                         continue;
                     }
                     //validate input
-                    if (input[0] == 2 || input[0] == 3)//validate board sides
+                    if (input[0] == 2 || input[0] == 3)//validate input for length and height board sides
                     {
                         if (i == 0 && num > 0 && num <= 8)//if tens digit
                         {
