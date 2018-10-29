@@ -146,8 +146,6 @@ namespace Midterm
                 $"DEV TEAM: BOOM!\n\n{new string(' ', (width - 15) / 2)}NICHOLAS LANDAU\n{new string(' ', (width - 15) / 2)}" +
                 $"JOHNATHAN LEECH\n{new string(' ', (width - 13) / 2)}KATIE HARRELL\n{new string(' ', (width - 9) / 2)}TY CARRON\n\n");
             Console.WriteLine(Environment.NewLine);
-            //Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
-            //Console.ReadKey();
 
         }
         public static void CustomXY()//sets custom board settings
