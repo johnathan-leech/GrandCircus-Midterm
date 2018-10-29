@@ -31,7 +31,6 @@ namespace Midterm
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();//List with KeyValuePairs for menu: string = display; Action = method call; to add: just menu.Add with no additional code changes
                 menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
                 menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instructions()));
-                //menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
                 menu.Add(new KeyValuePair<string, Action>("Scores", () => UserInput.RecentScoreReader()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Blank()));
 
@@ -142,17 +141,15 @@ namespace Midterm
         {
             Header();
             int width = Console.WindowWidth;
-            //string end = "Press any key to continue...";
 
-            //string padding = new string(' ', 40);//padding set to default console width divided by 2, to use: subtract 1/2 the line length
             Console.WriteLine($"\n{new string(' ', (width - 7) / 2)}CREDITS\n\n{new string(' ', (width - 15) / 2)}" +
                 $"DEV TEAM: BOOM!\n\n{new string(' ', (width - 15) / 2)}NICHOLAS LANDAU\n{new string(' ', (width - 15) / 2)}" +
                 $"JOHNATHAN LEECH\n{new string(' ', (width - 13) / 2)}KATIE HARRELL\n{new string(' ', (width - 9) / 2)}TY CARRON\n\n");
             Console.WriteLine(Environment.NewLine);
             //Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
             //Console.ReadKey();
-        }
 
+        }
         public static void CustomXY()//sets custom board settings
         {
             Header();
