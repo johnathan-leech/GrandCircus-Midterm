@@ -15,14 +15,9 @@ namespace Midterm
                 game.DisplayBoard();
                 try
                 {
-
-<<<<<<< HEAD
+                    
                     inputCord = TakeCoordinates(game.Rows,game.Columns);
-                    System.Console.WriteLine("(ENTER)Click/(F)lag/(Q)mark");
-=======
-                    inputCord = TakeCoordinates();
                     System.Console.WriteLine("(C)lick - (F)lag - (Q)mark");
->>>>>>> f0c8b3894db8c89e8093d55d56b29c3835eed841
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.F:
