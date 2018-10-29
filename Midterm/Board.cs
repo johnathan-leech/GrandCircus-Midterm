@@ -142,8 +142,7 @@ namespace Midterm
                             break;
                     }
                     Console.Write(displayChar + "  ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ResetColor();
                 }
                 xAxisCounter++;
                 Console.WriteLine();
