@@ -15,16 +15,17 @@ namespace Midterm
                 game.DisplayBoard();
                 try
                 {
+
+                    inputCord = TakeCoordinates();
                     System.Console.WriteLine("(ENTER)Click/(F)lag/(Q)mark");
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.F:
-                            inputCord = TakeCoordinates();
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.F);
                             break;
                         case ConsoleKey.Enter:
-                            inputCord = TakeCoordinates();
+                            
                             Menu.Header();
                             if (!game.RevealTile(inputCord.Item1, inputCord.Item2))
                             {
@@ -32,7 +33,7 @@ namespace Midterm
                             }
                             break;
                         case ConsoleKey.Q:
-                            inputCord = TakeCoordinates();
+                            
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.Q);
                             break;
@@ -85,7 +86,7 @@ namespace Midterm
             Console.WriteLine();
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
-            FileInfo highScore = new FileInfo(@".\HighScores.txt");
+            //FileInfo highScore = new FileInfo(@".\HighScores.txt");
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
             scoreWriter.WriteLine(name + ": " + "put highscore here");
             scoreWriter.Close();
@@ -101,8 +102,9 @@ namespace Midterm
                     break;
                 }
                 Console.WriteLine(print);
-
             }
+
+            scoreReader.Close();
         }
     }
 }
