@@ -53,7 +53,7 @@ namespace Midterm
             int row = x;
             int column = y;
             int minesTotal = mines;
-            double minesPercent = mines / (x * y);
+            double minesPercent = mines / 100;
             Board gameBoard = new Board(row, column, minesPercent);
             gameBoard.DisplayBoard();
         }

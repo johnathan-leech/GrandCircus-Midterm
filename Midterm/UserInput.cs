@@ -220,39 +220,6 @@ namespace Midterm
             }
         }
 
-        public static void InitializeBoard(int dimension)///////////////////////////////////temp method to test menus
-        {
-            Header();
-            Console.WriteLine($"\n{new string(' ', 30)}Board dimension is {dimension}");
-            Board newgame = new Board(dimension, dimension);
-            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
-            bool yes = YesNo();
-            if (yes)
-            {
-                LevelSelect();
-            }
-            else
-            {
-                Exit();
-            }
-        }
-
-        /*public static void CustomXY()
-        {
-            Header();
-            Console.WriteLine($"{new string(' ', 30)}user input xy & mines");
-            Console.Write($"\n{new string(' ', 25)}Return to Previous Menu?  (y/n)  ");
-            bool yes = YesNo();
-            if (yes)
-            {
-                LevelSelect();
-            }
-            else
-            {
-                Exit();
-            }
-        } */
-
         public static int KeyToNum(ConsoleKey key)
         {
             if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1) { return 1; }
@@ -314,10 +281,12 @@ namespace Midterm
 
                 try
                 {
-                    Console.Write("Please enter a number for the row ");
-                    int inputRow = int.Parse(Console.ReadLine());
                     Console.WriteLine();
+                    Console.Write("Please enter a number for the row ");
+                    Console.WriteLine();
+                    int inputRow = int.Parse(Console.ReadLine());
                     Console.Write("Please enter a number for the column");
+                    Console.WriteLine();
                     int inputColumn = int.Parse(Console.ReadLine());
                     indexInput = Tuple.Create(inputRow, inputColumn);
 
