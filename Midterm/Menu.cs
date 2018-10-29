@@ -135,21 +135,23 @@ namespace Midterm
             int[] input = new int[5] { 2, 0, 0, 0, 0 };//0=set, 1=input, 2=rows, 3=columns, 4=mines
             bool set = true;
             ConsoleKey key = ConsoleKey.Enter;
-
-            Console.WriteLine("\nEnter Board Dimensions (10 - 80) & Percentage of Mines (10-50%)");//currently only allows 2 digit input
+            int maxWindowWidth = Console.LargestWindowWidth;
+            int maxWindowHeight = Console.LargestWindowHeight;
+            int maxRow = maxWindowHeight - (maxWindowHeight % 10) - 10;
+            int maxCol = (maxWindowWidth / 2) - ((maxWindowWidth / 2) % 10) - 10;
 
             while (set)//loops to set row, column, and mines
             {
                 switch (input[0])//display which value will be set
                 {
                     case 2:
-                        Console.Write("\nRows:  ");
+                        Console.Write($"\nEnter Rows (10 - {maxRow}):  ");
                         break;
                     case 3:
-                        Console.Write("\nColumns:  ");
+                        Console.Write($"\nEnter Columns (10 - {maxCol}):  ");
                         break;
                     case 4:
-                        Console.Write("\nMines:  ");
+                        Console.Write("\nMines (10-50%):  ");
                         break;
                 }
 
@@ -165,14 +167,28 @@ namespace Midterm
                     }
                     else
                     {
-                        i -= 1;
-                        if (input[0] == 4) { Console.Write(" (10-50): "); } else { Console.Write(" (10-80): "); }
+                        i = -1;//if either number is invalid, reset
+                        if (input[0] == 2) { Console.Write($"\nInvalid, enter a number between 10-{maxRow}:  "); }
+                        else if (input[0] == 3) { Console.Write($"\nInvalid, enter a number between 10-{maxCol}:  "); }
+                        else if (input[0] == 4) { Console.Write("\nInvalid, enter a number between 10-50:  "); }
+                        else { Console.WriteLine("ERROR - WTF did you do?"); }
                         continue;
                     }
                     //validate input
-                    if (input[0] == 2 || input[0] == 3)//validate input for length and height board sides
+                    if (input[0] == 2)//validate input for rows
                     {
-                        if (i == 0 && num > 0 && num <= 8)//if tens digit
+                        if (i == 0 && num > 0 && num <= (maxRow / 10))//if tens digit
+                        {
+                            tens = num * 10;
+                        }
+                        else if (i == 1 && num >= 0 && num <= 9)//if single digit
+                        {
+                            single = num;
+                        }
+                    }
+                    else if (input[0] == 3)//validate input for columns
+                    {
+                        if (i == 0 && num > 0 && num <= (maxCol / 10))//if tens digit
                         {
                             tens = num * 10;
                         }
@@ -194,20 +210,7 @@ namespace Midterm
                     }
                     input[1] = tens + single;//combines input value
                 }
-
-                if (input[0] == 2 || input[0] == 3)//validate double digit value sides
-                {
-                    if (input[1] > 9 && input[1] <= 80)
-                    {
-                        input[input[0]] = input[1];//save value to array
-                        input[0] += 1;//set next index
-                        if (input[0] == 5)//break out after all values set
-                        {
-                            set = false;
-                        }
-                    }
-                }
-                else if (input[0] == 4)//validate double digit value mines
+                if (input[0] == 4)//validate double digit value mines
                 {
                     if (input[1] > 9 && input[1] <= 50)
                     {
@@ -217,6 +220,22 @@ namespace Midterm
                         {
                             set = false;
                         }
+                    }
+                }
+                if (input[0] == 3)//validate double digit value columns
+                {
+                    if (input[1] > 9 && input[1] <= maxCol)
+                    {
+                        input[input[0]] = input[1];//save value to array
+                        input[0] += 1;//set next index
+                    }
+                }
+                if (input[0] == 2)//validate double digit value rows
+                {
+                    if (input[1] > 9 && input[1] <= maxRow)
+                    {
+                        input[input[0]] = input[1];//save value to array
+                        input[0] += 1;//set next index
                     }
                 }
                 else
