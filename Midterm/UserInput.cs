@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
+
 
 namespace Midterm
 {
@@ -87,21 +89,34 @@ namespace Midterm
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(name + " Time: "+score+" Board Size: "+mode);
+            scoreWriter.WriteLine(score+ " "+name+" "+mode);
             scoreWriter.Close();
         }
         public static void RecentScoreReader()
         {
+            
             Menu.Header();
+            List<string> scoreList = new List<string>();
             StreamReader scoreReader = new StreamReader(@".\HighScores.txt");
-            for (int i = 0; i <= 10;)
+            
+            for (int i = 0; i < 10; i++)
             {
                 string print = scoreReader.ReadLine();
                 if (print == null)
                 {
                     break;
                 }
-                Console.WriteLine(print);
+                
+                scoreList.Add(print);
+
+                
+                
+            }
+            scoreList.Sort();
+            for(int i = 0; i < scoreList.Count; i++)
+            {
+                    string[] sortedScoreList = scoreList[i].Split(' ');
+                    Console.WriteLine("{0}'s Score: {1} Board Size {2}", sortedScoreList[1], sortedScoreList[0], sortedScoreList[2]);
             }
 
             scoreReader.Close();
