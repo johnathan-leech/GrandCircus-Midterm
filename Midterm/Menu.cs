@@ -8,7 +8,8 @@ namespace Midterm
         public static void Header()//Header clears each page and displays title
         {
             Console.Clear();
-            Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!\n");
+            Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!");
+            Console.WriteLine($"{new string(' ', 32)}Games Completed: {Board.counter}\n");
         }
 
         public static void StartMenu()

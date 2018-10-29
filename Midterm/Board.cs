@@ -12,6 +12,7 @@ namespace Midterm
         private double minesPercent;
         private int[,] hiddenBoard;
         private State[,] displayBoard;
+        public static int counter = 0;
 
         public Board()
         {
@@ -74,6 +75,7 @@ namespace Midterm
                 }
             }
             MakeAllMines();
+            counter++;
         }
 
         public void DisplayBoard()
@@ -276,5 +278,7 @@ namespace Midterm
                 Console.WriteLine();
             }
         }
+
+
     }
 }
