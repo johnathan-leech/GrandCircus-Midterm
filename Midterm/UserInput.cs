@@ -81,14 +81,13 @@ namespace Midterm
             return indexInput;
         }
 
-        public static void RecentScores(string score)
+        public static void RecentScores(string score, string mode)
         {
             Console.WriteLine();
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
-            //FileInfo highScore = new FileInfo(@".\HighScores.txt");
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(name + ": " + score);
+            scoreWriter.WriteLine(name + " Time: "+score+" Board Size: "+mode);
             scoreWriter.Close();
         }
         public static void RecentScoreReader()
