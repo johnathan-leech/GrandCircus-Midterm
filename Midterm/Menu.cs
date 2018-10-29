@@ -20,7 +20,7 @@ namespace Midterm
 
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();//List with KeyValuePairs for menu: string = display; Action = method call; to add: just menu.Add with no additional code changes
                 menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
-                menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instruct()));
+                menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instructions()));
                 menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Blank()));
 
