@@ -188,9 +188,9 @@ namespace Midterm
                     else
                     {
                         i = -1;//if either number is invalid, reset
-                        if (input[0] == 2) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
-                        else if (input[0] == 3) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
-                        else if (input[0] == 4) { Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
+                        if (input[0] == 2) { Console.Write($"\n{new string(' ', (width - 25) / 2)}INVALID! Enter Rows (10 - {maxRow}):  "); }
+                        else if (input[0] == 3) { Console.Write($"\n{new string(' ', (width - 25) / 2)}INVALID! Enter Columns (10 - {maxRow}):  "); }
+                        else if (input[0] == 4) { Console.Write($"\n{new string(' ', (width - 25) / 2)}INVALID! Enter Mines (10 - {maxRow}):  "); }
                         else { Console.WriteLine("ERROR - WTF did you do?"); }
                         continue;
                     }
