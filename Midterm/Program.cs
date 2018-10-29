@@ -8,8 +8,6 @@ namespace Midterm
         static void Main(string[] args)
         {
             Menu.StartMenu();
-            UserInput.RecentScores();
-            UserInput.RecentScoreReader();
             Menu.Exit();
         }
     }
