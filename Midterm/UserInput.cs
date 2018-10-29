@@ -15,7 +15,7 @@ namespace Midterm
                 game.DisplayBoard();
                 try
                 {
-                    inputCord = TakeCoordinates();
+                    inputCord = TakeCoordinates(game.Rows, game.Columns);
                     System.Console.WriteLine("(C)lick - (F)lag - (Q)mark");
                     switch (Console.ReadKey().Key)
                     {
@@ -52,30 +52,43 @@ namespace Midterm
         }
 
         // needs to take user input for row, column selection
-        public static Tuple<int, int> TakeCoordinates()
+        public static Tuple<int, int> TakeCoordinates(int maxRow, int maxCol)
         {
             var indexInput = Tuple.Create(0, 0);
-            for (int i = 0; i == 0;)
+
+            Console.WriteLine();
+            Console.Write("Please enter a number for the row({0}-{1})", 1, maxRow);
+            Console.WriteLine();
+
+            int inputRow;
+            while (true)
             {
-
-                try
+                if (int.TryParse(Console.ReadLine(), out inputRow))
                 {
-                    Console.WriteLine();
-                    Console.Write("Please enter a number for the row: ");
-                    int inputRow = int.Parse(Console.ReadLine());
-                    Console.WriteLine();
-                    Console.Write("Please enter a number for the column: ");
-                    int inputColumn = int.Parse(Console.ReadLine());
-                    Console.WriteLine();
-                    indexInput = Tuple.Create(inputRow - 1, inputColumn - 1);
-
-                    i++;
+                    if (inputRow > 0 && inputRow <= maxRow)
+                        break;
+                    Console.WriteLine("That is not within the range");
                 }
-                catch
+                else
                 {
-                    Console.WriteLine("Please enter a valid number");
+                    Console.WriteLine("That is not a number");
                 }
             }
+            Console.Write("Please enter a number for the column({0}-{1})", 1, maxCol);
+            Console.WriteLine();
+            int inputColumn;
+            while (true)
+            {
+                if (int.TryParse(Console.ReadLine(), out inputColumn))
+                {
+                    if (inputRow > 0 && inputRow <= maxCol)
+                        break;
+                    Console.WriteLine("That is not within the range");
+                }
+                Console.WriteLine("That is not a number");
+            }
+            indexInput = Tuple.Create(inputRow - 1, inputColumn - 1);
+
             return indexInput;
         }
 
