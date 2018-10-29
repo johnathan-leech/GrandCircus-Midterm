@@ -74,7 +74,7 @@ namespace Midterm
                 string select = "What would you like to do? (enter number)  ";
 
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
-                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(6)));
+                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(10)));
                 menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
                 menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
