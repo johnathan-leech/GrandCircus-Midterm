@@ -110,7 +110,12 @@ namespace Midterm
             
             Menu.Header();
             List<string> scoreList = new List<string>();
-            StreamReader scoreReader = new StreamReader(@".\HighScores.txt");
+            if(!File.Exists("HighScores.txt"))
+            {
+                StreamWriter sw = new StreamWriter("HighScores.txt");
+                sw.Close();
+            }
+            StreamReader scoreReader = new StreamReader(@"HighScores.txt");
             
             for (int i = 0; i < 10; i++)
             {
