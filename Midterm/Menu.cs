@@ -224,7 +224,7 @@ namespace Midterm
                         }
                     }
                 }
-                if (input[0] == 3)//validate double digit value columns
+                else if (input[0] == 3)//validate double digit value columns
                 {
                     if (input[1] > 9 && input[1] <= maxCol)
                     {
@@ -232,7 +232,7 @@ namespace Midterm
                         input[0] += 1;//set next index
                     }
                 }
-                if (input[0] == 2)//validate double digit value rows
+                else if (input[0] == 2)//validate double digit value rows
                 {
                     if (input[1] > 9 && input[1] <= maxRow)
                     {
