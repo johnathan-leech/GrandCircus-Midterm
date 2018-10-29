@@ -12,11 +12,11 @@ namespace Midterm
             string count = $"Games Won: {Board.winCounter}  -  Games Lost: {Board.loseCounter}";
             string timer = Board.stopwatch.Elapsed.ToString(@"mm\:ss\.ff");
 
-            Console.WriteLine(Environment.NewLine);
             Console.WriteLine(new string(' ', (width - head.Length) / 2) + head);
             Console.WriteLine(new string(' ', (width - count.Length) / 2) + count);
             Console.WriteLine(new string(' ', (width - timer.Length) / 2) + timer);
             Console.WriteLine(Environment.NewLine);
+
         }
 
         public static void StartMenu()
@@ -74,9 +74,9 @@ namespace Midterm
                 string select = "What would you like to do? (enter number)  ";
 
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
-                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(8,8,1)));
-                menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
-                menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
+                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(8)));
+                menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(16)));
+                menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(32)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
                 menu.Add(new KeyValuePair<string, Action>("Return to Start Menu", () => Blank()));
 
