@@ -62,7 +62,7 @@ namespace Midterm
                     Console.Write("Please enter a number for the column");
                     Console.WriteLine();
                     int inputColumn = int.Parse(Console.ReadLine());
-                    indexInput = Tuple.Create(inputRow, inputColumn);
+                    indexInput = Tuple.Create(inputRow -1, inputColumn -1);
 
                     i++;
                 }
