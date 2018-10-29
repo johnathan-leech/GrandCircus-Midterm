@@ -74,7 +74,7 @@ namespace Midterm
                 string select = "What would you like to do? (enter number)  ";
 
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
-                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(10)));
+                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(8,8,1)));
                 menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
                 menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
@@ -160,21 +160,33 @@ namespace Midterm
             int maxWindowHeight = Console.LargestWindowHeight;
             int maxRow = maxWindowHeight - (maxWindowHeight % 10) - 10;
             int maxCol = (maxWindowWidth / 3) - ((maxWindowWidth / 3) % 10) - 10;
+            int maxMine = 50;
+            //universal variables
+            int max = 0;
+            int select = 0;
+            string display = "";
 
             while (set)//loops to set row, column, and mines
             {
                 switch (input[0])//display which value will be set
                 {
                     case 2:
-                        Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  ");
+                        display = "Rows";
+                        max = maxRow;
+                        select = 2;
                         break;
                     case 3:
-                        Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter Columns (10 - {maxCol}):  ");
+                        display = "Columns";
+                        max = maxCol;
+                        select = 3;
                         break;
                     case 4:
-                        Console.Write($"\n{new string(' ', (width - 25) / 2)}Mines (10-50%):  ");
+                        display = "Mines %";
+                        max = maxMine;
+                        select = 4;
                         break;
                 }
+                Console.Write($"\n{new string(' ', (width - 25) / 2)}Enter {display} (10 - {max}):  ");
 
                 int num = 0;
                 int tens = 0;
@@ -189,38 +201,14 @@ namespace Midterm
                     else
                     {
                         i = -1;//if either number is invalid, reset
-                        if (input[0] == 2) { Console.Write($" INVALID!\n{new string(' ', (width - 25) / 2)}Enter Rows (10 - {maxRow}):  "); }
-                        else if (input[0] == 3) { Console.Write($" INVALID!\n{new string(' ', (width - 25) / 2)}Enter Columns (10 - {maxRow}):  "); }
-                        else if (input[0] == 4) { Console.Write($" INVALID!\n{new string(' ', (width - 25) / 2)}Enter Mines (10 - {maxRow}):  "); }
+                        if (input[0] == select) { Console.Write($" INVALID!\n{new string(' ', (width - 25) / 2)}Enter {display} (10 - {max}):  "); }
                         else { Console.WriteLine("ERROR - WTF did you do?"); }
                         continue;
                     }
                     //validate input
-                    if (input[0] == 2)//validate input for rows
+                    if (input[0] == select)//validate input for each digit
                     {
-                        if (i == 0 && num > 0 && num <= (maxRow / 10))//if tens digit
-                        {
-                            tens = num * 10;
-                        }
-                        else if (i == 1 && num >= 0 && num <= 9)//if single digit
-                        {
-                            single = num;
-                        }
-                    }
-                    else if (input[0] == 3)//validate input for columns
-                    {
-                        if (i == 0 && num > 0 && num <= (maxCol / 10))//if tens digit
-                        {
-                            tens = num * 10;
-                        }
-                        else if (i == 1 && num >= 0 && num <= 9)//if single digit
-                        {
-                            single = num;
-                        }
-                    }
-                    else if (input[0] == 4)//validate mines
-                    {
-                        if (i == 0 && num > 0 && num <= 5)//if tens digit
+                        if (i == 0 && num > 0 && num <= max / 10)//if tens digit
                         {
                             tens = num * 10;
                         }
@@ -236,9 +224,9 @@ namespace Midterm
                     input[1] = tens + single;//combines input value
                 }
 
-                if (input[0] == 4)//validate double digit value mines
+                if (input[0] == select)//validate double digit value
                 {
-                    if (input[1] > 9 && input[1] <= 50)
+                    if (input[1] > 9 && input[1] <= max)
                     {
                         input[input[0]] = input[1];//save value to array
                         input[0] += 1;//set next index
@@ -246,30 +234,6 @@ namespace Midterm
                         {
                             set = false;
                         }
-                    }
-                    else
-                    {
-                        Console.Write(" INVALID!");
-                    }
-                }
-                else if (input[0] == 3)//validate double digit value columns
-                {
-                    if (input[1] > 9 && input[1] <= maxCol)
-                    {
-                        input[input[0]] = input[1];//save value to array
-                        input[0] += 1;//set next index
-                    }
-                    else
-                    {
-                        Console.Write(" INVALID!");
-                    }
-                }
-                else if (input[0] == 2)//validate double digit value rows
-                {
-                    if (input[1] > 9 && input[1] <= maxRow)
-                    {
-                        input[input[0]] = input[1];//save value to array
-                        input[0] += 1;//set next index
                     }
                     else
                     {
