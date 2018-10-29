@@ -94,20 +94,27 @@ namespace Midterm
                 Console.Write("{0, -4}", xAxisCounter + 1);
                 for (int j = 0; j < columns; j++)
                 {
-                    yAxisCounter++;
+                    //yAxisCounter++;
                     switch (displayBoard[i, j])
                     {
                         case State.clicked:
                             displayChar = (char)(hiddenBoard[i, j] + '0');
+                            setColor(hiddenBoard[i,j]);
                             if (displayChar == '9')
+                            {
                                 displayChar = '\u0042'; //'*'
+                            }
                             if (displayChar == '0')
+                            {
                                 displayChar = '-';
+                            }
                             break;
                         case State.flag:
+                            Console.ForegroundColor = ConsoleColor.Magenta;
                             displayChar = 'F'; //''
                             break;
                         case State.hidden:
+                            //Console.ForegroundColor = ConsoleColor.Cyan;
                             displayChar = '#'; //''
                             break;
                         case State.qmark:
@@ -115,9 +122,48 @@ namespace Midterm
                             break;
                     }
                     Console.Write(displayChar + "  ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.BackgroundColor = ConsoleColor.Black;
                 }
                 xAxisCounter++;
                 Console.WriteLine();
+            }
+        }
+        public void setColor(int colorCode)
+        {
+            switch (colorCode)
+            {
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+
+                case 2:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+
+                case 3:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+
+                case 4:
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+
+                case 5:
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    break;
+
+                case 6:
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    break;
+
+                case 7:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
+
+                case 8:
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    break;
             }
         }
 
