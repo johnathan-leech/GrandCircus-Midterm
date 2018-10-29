@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.IO;
 namespace Midterm
 {
     class Menu
@@ -8,7 +8,8 @@ namespace Midterm
         public static void Header()//Header clears each page and displays title
         {
             Console.Clear();
-            Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!\n");
+            Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!");
+            Console.WriteLine($"{new string(' ', 32)}Games Completed: {Board.counter}\n");
         }
 
         public static void StartMenu()
@@ -276,6 +277,29 @@ namespace Midterm
             else if (key == ConsoleKey.D8 || key == ConsoleKey.NumPad8) { return 8; }
             else if (key == ConsoleKey.D9 || key == ConsoleKey.NumPad9) { return 9; }
             else { return 0; }
+        }
+        public static void HighScores(/*Put highscore here*/)
+        {
+            Console.WriteLine("Please enter your name to be entered on the scoreboard");
+            string name = Console.ReadLine();
+            FileInfo highScore = new FileInfo(@".\HighScores.txt");
+            StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt",true);
+            scoreWriter.WriteLine(name + " "+"put highscore here");
+            scoreWriter.Close();
+        }
+        public static void HighScoresReader()
+        {
+            StreamReader scoreReader = new StreamReader(@".\HighScores.txt");
+            for(int i = 0; i == 0;)
+            {
+                string print = scoreReader.ReadLine();
+                if(print == null)
+                {
+                    i++;
+                }
+                Console.WriteLine(print);
+
+            }
         }
     }
 }
