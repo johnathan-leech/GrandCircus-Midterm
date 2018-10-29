@@ -78,7 +78,6 @@ namespace Midterm
                 }
             }
             MakeAllMines();
-            stopwatch.Start();
         }
 
         public void DisplayBoard()
@@ -135,6 +134,7 @@ namespace Midterm
                 Console.WriteLine();
             }
         }
+
         public void setColor(int colorCode)
         {
             switch (colorCode)
@@ -268,12 +268,8 @@ namespace Midterm
             if (displayBoard.Length - (numMines) == numberClicked)
             {
                 DisplayHiddenBoard();  // <-- display hidden board
-                
-                UserInput.RecentScores(stopwatch.Elapsed.ToString(@"mm\:ss\.ff"));
+                UserInput.RecentScores(stopwatch.Elapsed.ToString(@"mm\:ss\.ff"), rows+"x"+columns);
                 UserInput.RecentScoreReader();
-
-                Console.ReadLine();
-
                 return true;
             }
             return false;
@@ -349,6 +345,8 @@ namespace Midterm
             }
             Console.WriteLine("\n\n");
             DisplayBoard();
+            stopwatch.Stop();
+            stopwatch.Reset();
         }
     }
 }

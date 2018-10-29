@@ -7,7 +7,7 @@ namespace Midterm
     {
         public static void Playstate(Board game)
         {
-            Board.stopwatch.Reset();
+            
             Menu.Header();
             Tuple<int, int> inputCord;
             while (!game.WinsOrLoses())
@@ -49,7 +49,6 @@ namespace Midterm
                 }
                 Board.stopwatch.Start();
             }
-            Board.stopwatch.Stop();
             Board.counter++;
         }
 
@@ -79,20 +78,21 @@ namespace Midterm
                 }
             }
             return indexInput;
+
         }
 
-        public static void RecentScores(string score)
+        public static void RecentScores(string score, string mode)
         {
             Console.WriteLine();
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
-            //FileInfo highScore = new FileInfo(@".\HighScores.txt");
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(name + ": " + score);
+            scoreWriter.WriteLine(name + " Time: "+score+" Board Size: "+mode);
             scoreWriter.Close();
         }
         public static void RecentScoreReader()
         {
+            Menu.Header();
             StreamReader scoreReader = new StreamReader(@".\HighScores.txt");
             for (int i = 0; i <= 10;)
             {
@@ -105,6 +105,7 @@ namespace Midterm
             }
 
             scoreReader.Close();
+            Console.ReadLine();
         }
     }
 }

@@ -37,6 +37,7 @@ namespace Midterm
                 menu.Add(new KeyValuePair<string, Action>("Play", () => MainMenu()));
                 menu.Add(new KeyValuePair<string, Action>("Instructions", () => Instructions()));
                 menu.Add(new KeyValuePair<string, Action>("Credits", () => CreditsStatic()));
+                menu.Add(new KeyValuePair<string, Action>("Scores", () => UserInput.RecentScoreReader()));
                 menu.Add(new KeyValuePair<string, Action>("Exit", () => Blank()));
 
                 int menuCount = 0;//globally declared to use in multiple nests, changes dynamically based on menu items
@@ -79,7 +80,7 @@ namespace Midterm
                 string select = "What would you like to do? (enter number)  ";
 
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
-                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(15)));
+                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(10)));
                 menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
                 menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
