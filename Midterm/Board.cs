@@ -17,6 +17,20 @@ namespace Midterm
         public static int winCounter = 0;
         public static int loseCounter = 0;
         public static Stopwatch stopwatch = new Stopwatch();
+        public int Rows
+        {
+            get
+            {
+                return rows;
+            }
+        }
+        public int Columns
+        {
+            get
+            {
+                return columns;
+            }
+        }
 
         public Board()
         {
