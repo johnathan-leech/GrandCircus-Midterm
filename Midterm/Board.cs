@@ -268,9 +268,11 @@ namespace Midterm
             if (displayBoard.Length - (numMines) == numberClicked)
             {
                 DisplayHiddenBoard();  // <-- display hidden board
-                Console.ReadLine();
-                UserInput.RecentScores();
+                
+                UserInput.RecentScores(stopwatch.ToString());
                 UserInput.RecentScoreReader();
+
+                Console.ReadLine();
 
                 return true;
             }
