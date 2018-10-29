@@ -7,6 +7,7 @@ namespace Midterm
     {
         public static void Playstate(Board game)
         {
+            Board.stopwatch.Reset();
             Menu.Header();
             Tuple<int, int> inputCord;
             while (!game.WinsOrLoses())
@@ -45,7 +46,10 @@ namespace Midterm
                 {
                     Console.WriteLine("Invalid Corn");
                 }
+                Board.stopwatch.Start();
             }
+            Board.stopwatch.Stop();
+            Board.counter++;
         }
 
         // needs to take user input for row, column selection

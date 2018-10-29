@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Midterm
 {
@@ -14,6 +15,7 @@ namespace Midterm
         private int[,] hiddenBoard;
         private State[,] displayBoard;
         public static int counter = 0;
+        public static Stopwatch stopwatch = new Stopwatch();
 
         public Board()
         {
@@ -76,7 +78,7 @@ namespace Midterm
                 }
             }
             MakeAllMines();
-            counter++;
+            stopwatch.Start();
         }
 
         public void DisplayBoard()

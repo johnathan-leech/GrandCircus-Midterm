@@ -8,7 +8,9 @@ namespace Midterm
         {
             Console.Clear();
             Console.WriteLine($"\n{new string(' ', 30)}Welcome to MINEFIELD!");
-            Console.WriteLine($"{new string(' ', 32)}Games Completed: {Board.counter}\n");
+            Console.WriteLine($"{new string(' ', 32)}Games Completed: {Board.counter}");
+            Console.WriteLine($"{new string(' ', 36)}" + Board.stopwatch.Elapsed.ToString(@"mm\:ss\.ff") + "\n");
+
         }
 
         public static void StartMenu()
