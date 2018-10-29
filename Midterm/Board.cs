@@ -9,6 +9,7 @@ namespace Midterm
         public bool isMine;
         private int rows;
         private int columns;
+        private int numMines;
         private double minesPercent;
         private int[,] hiddenBoard;
         private State[,] displayBoard;
@@ -56,7 +57,7 @@ namespace Midterm
             int row = x;
             int column = y;
             int minesTotal = mines;
-            double minesPercent = mines / 100;
+            double minesPercent = mines / 100.0;
             Board gameBoard = new Board(row, column, minesPercent);
             Console.Clear();
             UserInput.Playstate(gameBoard);
@@ -205,7 +206,9 @@ namespace Midterm
         {
             Random r = new Random();
             // trys to create a mine and adds one to i each time a mine is made.
-            for (int i = 0; i < rows * columns * minesPercent; i += MakesMine(r.Next() % rows, r.Next() % columns) ? 1 : 0) ;
+            int i;
+            for (i = 0; i < rows * columns * minesPercent; i += MakesMine(r.Next() % rows, r.Next() % columns) ? 1 : 0) ;
+            numMines = i;
         }
 
         public bool MakesMine(int row, int column)
@@ -259,7 +262,7 @@ namespace Midterm
                 }
             }
 
-            if (displayBoard.Length * (1 - minesPercent) == numberClicked)
+            if (displayBoard.Length - (numMines) == numberClicked)
             {
                 DisplayHiddenBoard();  // <-- display hidden board
                 Console.ReadLine();
