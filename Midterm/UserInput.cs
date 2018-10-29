@@ -93,6 +93,7 @@ namespace Midterm
         }
         public static void RecentScoreReader()
         {
+            Menu.Header();
             StreamReader scoreReader = new StreamReader(@".\HighScores.txt");
             for (int i = 0; i <= 10;)
             {
@@ -105,6 +106,7 @@ namespace Midterm
             }
 
             scoreReader.Close();
+            Console.ReadLine();
         }
     }
 }

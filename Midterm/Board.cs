@@ -271,9 +271,6 @@ namespace Midterm
                 
                 UserInput.RecentScores(stopwatch.Elapsed.ToString(@"mm\:ss\.ff"));
                 UserInput.RecentScoreReader();
-
-                Console.ReadLine();
-
                 return true;
             }
             return false;
