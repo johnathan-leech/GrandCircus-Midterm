@@ -7,7 +7,7 @@ namespace Midterm
     {
         public static void Playstate(Board game)
         {
-            
+
             Menu.Header();
             Tuple<int, int> inputCord;
             while (!game.WinsOrLoses())
@@ -16,16 +16,21 @@ namespace Midterm
                 try
                 {
 
+<<<<<<< HEAD
                     inputCord = TakeCoordinates(game.Rows,game.Columns);
                     System.Console.WriteLine("(ENTER)Click/(F)lag/(Q)mark");
+=======
+                    inputCord = TakeCoordinates();
+                    System.Console.WriteLine("(C)lick - (F)lag - (Q)mark");
+>>>>>>> f0c8b3894db8c89e8093d55d56b29c3835eed841
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.F:
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.F);
                             break;
-                        case ConsoleKey.Enter:
-                            
+                        case ConsoleKey.C:
+
                             Menu.Header();
                             if (!game.RevealTile(inputCord.Item1, inputCord.Item2))
                             {
@@ -33,7 +38,7 @@ namespace Midterm
                             }
                             break;
                         case ConsoleKey.Q:
-                            
+
                             Menu.Header();
                             game.IsFlagged(inputCord.Item1, inputCord.Item2, ConsoleKey.Q);
                             break;
@@ -100,7 +105,7 @@ namespace Midterm
             Console.WriteLine("Please enter your name to be entered on the scoreboard");
             string name = Console.ReadLine();
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
-            scoreWriter.WriteLine(name + " Time: "+score+" Board Size: "+mode);
+            scoreWriter.WriteLine(name + " Time: " + score + " Board Size: " + mode);
             scoreWriter.Close();
         }
         public static void RecentScoreReader()
