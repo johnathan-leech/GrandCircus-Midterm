@@ -7,7 +7,8 @@ namespace Midterm
     {
         static void Main(string[] args)
         {
-            UserInput.StartMenu();
+            Menu.StartMenu();
+            Menu.Exit();
         }
     }
 }

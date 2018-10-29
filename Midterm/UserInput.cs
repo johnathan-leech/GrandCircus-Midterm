@@ -301,8 +301,5 @@ namespace Midterm
         }
 
         // need to add 'make a loop of play' in order to get continuous display and input
-
-
-
     }
 }
