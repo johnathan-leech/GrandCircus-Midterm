@@ -135,6 +135,7 @@ namespace Midterm
                 Console.WriteLine();
             }
         }
+
         public void setColor(int colorCode)
         {
             switch (colorCode)
