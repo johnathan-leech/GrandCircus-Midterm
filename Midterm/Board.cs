@@ -249,10 +249,12 @@ namespace Midterm
             if (isMine == true)
             {
                 Console.WriteLine("BOOOOOOOOM!");
-                Console.WriteLine("Oh no, you hit a bomb!");
+                Console.WriteLine("Oh no, you hit a bomb!\n");
                 DisplayHiddenBoard();  // <-- display hidden board
+                Console.WriteLine("Try Again! :)");
                 Console.ReadLine();
                 loseCounter++;
+                stopwatch.Reset();
                 return true;
             }
 
@@ -370,7 +372,6 @@ namespace Midterm
             Console.WriteLine("\n\n");
             //DisplayBoard();
             stopwatch.Stop();
-            stopwatch.Reset();
         }
     }
 }

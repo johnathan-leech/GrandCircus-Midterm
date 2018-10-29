@@ -74,7 +74,7 @@ namespace Midterm
                 string select = "What would you like to do? (enter number)  ";
 
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
-                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(10)));
+                menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(6)));
                 menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
                 menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
@@ -146,10 +146,8 @@ namespace Midterm
                 $"DEV TEAM: BOOM!\n\n{new string(' ', (width - 15) / 2)}NICHOLAS LANDAU\n{new string(' ', (width - 15) / 2)}" +
                 $"JOHNATHAN LEECH\n{new string(' ', (width - 13) / 2)}KATIE HARRELL\n{new string(' ', (width - 9) / 2)}TY CARRON\n\n");
             Console.WriteLine(Environment.NewLine);
-            //Console.WriteLine(new string(' ', (width - end.Length) / 2) + end);
-            //Console.ReadKey();
-
         }
+
         public static void CustomXY()//sets custom board settings
         {
             Header();

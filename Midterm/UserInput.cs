@@ -15,7 +15,6 @@ namespace Midterm
                 game.DisplayBoard();
                 try
                 {
-
                     inputCord = TakeCoordinates();
                     System.Console.WriteLine("(C)lick - (F)lag - (Q)mark");
                     switch (Console.ReadKey().Key)
@@ -78,7 +77,6 @@ namespace Midterm
                 }
             }
             return indexInput;
-
         }
 
         public static void RecentScores(string score, string mode)
@@ -89,7 +87,9 @@ namespace Midterm
             StreamWriter scoreWriter = new StreamWriter(@".\HighScores.txt", true);
             scoreWriter.WriteLine(name + " Time: " + score + " Board Size: " + mode);
             scoreWriter.Close();
+            Board.stopwatch.Reset();
         }
+
         public static void RecentScoreReader()
         {
             Menu.Header();
