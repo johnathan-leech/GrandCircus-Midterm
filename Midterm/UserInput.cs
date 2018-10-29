@@ -57,8 +57,7 @@ namespace Midterm
             var indexInput = Tuple.Create(0, 0);
 
             Console.WriteLine();
-            Console.Write("Please enter a number for the row({0}-{1})", 1, maxRow);
-            Console.WriteLine();
+            Console.Write("Please enter a number for the row({0}-{1}): ", 1, maxRow);
 
             int inputRow;
             while (true)
@@ -74,8 +73,7 @@ namespace Midterm
                     Console.WriteLine("That is not a number");
                 }
             }
-            Console.Write("Please enter a number for the column({0}-{1})", 1, maxCol);
-            Console.WriteLine();
+            Console.Write("Please enter a number for the column({0}-{1}): ", 1, maxCol);
             int inputColumn;
             while (true)
             {
