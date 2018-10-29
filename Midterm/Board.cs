@@ -37,15 +37,16 @@ namespace Midterm
             InitializeBoard();
         }
 
-        //////////////////////////////////sending dimensions from UserInput class
+        //sending dimensions from UserInput class
+        //////////////////////////////////sending dimensions from Menu class
         public static void BoardDimensions(int xy)
         {
             int row = xy;
             int column = xy;
             double minesPercent = .15;
             Board gameBoard = new Board(row, column, minesPercent);
+
             Console.Clear();
-            //gameBoard.DisplayBoard();
             UserInput.Playstate(gameBoard);
         }
 
@@ -56,9 +57,9 @@ namespace Midterm
             int minesTotal = mines;
             double minesPercent = mines / 100;
             Board gameBoard = new Board(row, column, minesPercent);
-            //gameBoard.DisplayBoard();
+            Console.Clear();
             UserInput.Playstate(gameBoard);
-        }///////////////////////////////////////////////////////////////////////////
+        }
 
         private void InitializeBoard()
         {
@@ -88,9 +89,7 @@ namespace Midterm
                 Console.Write("{0, -3}", yAxisCounter);
             }
             Console.WriteLine();
-
-
-            for (int i = 0; i < columns; i++)
+            for (int i = 0; i < rows; i++)
             {
                 Console.Write("{0, -4}", xAxisCounter);
                 for (int j = 0; j < columns; j++)
@@ -255,9 +254,9 @@ namespace Midterm
         public void DisplayHiddenBoard()
         {
             char temp = ' ';
-            for (int i = 0; i < columns; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < rows; j++)
+                for (int j = 0; j < columns; j++)
                 {
                     switch (hiddenBoard[i, j])
                     {

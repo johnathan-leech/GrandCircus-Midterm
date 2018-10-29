@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Linq;
-using System.Text;
 
 namespace Midterm
 {
@@ -76,11 +73,9 @@ namespace Midterm
             {
                 Header();
                 List<KeyValuePair<string, Action>> menu = new List<KeyValuePair<string, Action>>();
-                menu.Add(new KeyValuePair<string, Action>("Beginner", () => Board.BoardDimensions(10)));
                 menu.Add(new KeyValuePair<string, Action>("Easy", () => Board.BoardDimensions(15)));
                 menu.Add(new KeyValuePair<string, Action>("Intermediate", () => Board.BoardDimensions(20)));
                 menu.Add(new KeyValuePair<string, Action>("Hard", () => Board.BoardDimensions(30)));
-                menu.Add(new KeyValuePair<string, Action>("Expert", () => Board.BoardDimensions(40)));
                 menu.Add(new KeyValuePair<string, Action>("Custom", () => CustomXY()));
                 menu.Add(new KeyValuePair<string, Action>("Return to Start Menu", () => Blank()));
 
