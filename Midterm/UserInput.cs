@@ -81,7 +81,7 @@ namespace Midterm
             {
                 if (int.TryParse(Console.ReadLine(), out inputColumn))
                 {
-                    if (inputRow > 0 && inputRow <= maxCol)
+                    if (inputColumn > 0 && inputColumn <= maxCol)
                         break;
                     Console.WriteLine("That is not within the range");
                 }
